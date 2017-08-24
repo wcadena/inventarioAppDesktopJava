@@ -91,7 +91,7 @@ public class LeerArchivos {
         while (st.hasMoreTokens()) {
             String linea =st.nextToken();                        
             if(lee){
-                System.out.println("\\\\"+linea);
+                //System.out.println("\\\\"+linea);
                 lista.add(new Aplicacion(linea));
             }
             if (linea.equals("Applications:")) {
@@ -159,7 +159,7 @@ public class LeerArchivos {
                 Iterator<Aplicacion> nombreIterator = apli.iterator();
                 while(nombreIterator.hasNext()){
                         Aplicacion elemento = nombreIterator.next();
-                        System.out.println(elemento);
+                        System.out.println("+->"+elemento);
                 }
                 
             }
