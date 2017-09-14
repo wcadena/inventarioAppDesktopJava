@@ -1,3 +1,21 @@
+package ini;
+
+
+
+import java.awt.event.ActionEvent;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Aplicacion;
+import model.Disco;
+import model.Maquina;
+import utils.LeerArchivos;
+import utils.PruebaRuntime;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +28,52 @@
  */
 public class ActualizadorJNLP extends javax.swing.JApplet {
 
+    private ArrayList<Aplicacion> _aplicaciones;
+    private ArrayList<Disco>    _discos;
+    private ArrayList<Maquina>  _maquinas;
+    
+    
+    public String leerArrayList(List dato){
+        String _lee="";
+        Iterator<Object> nombreIterator = dato.iterator();                
+                while(nombreIterator.hasNext()){
+                        Object elemento = nombreIterator.next();
+                        _lee= _lee+("+->"+elemento)+"\n";
+                        
+                        /*if ( elemento instanceof Aplicacion ){                            
+                        }*/
+                        
+                }
+        return _lee;
+    }
+    
+    
+    public void runner() {
+        PruebaRuntime pru = new PruebaRuntime();
+        LeerArchivos arc =new LeerArchivos();
+        
+        String dato = pru.getContenido();
+        int j=0;
+        List<String> tar = arc.traductores;
+        for (String dat : tar) {
+            //System.out.println(j++);
+            arc.parseDoc(dato, dat);
+            this._aplicaciones=arc.getAplicaciones();
+            this._discos=arc.getDiscos();
+            this._maquinas=arc.getMaquinas();
+            this.jTextArea1.setText(this.leerArrayList(this._aplicaciones));
+            this.jTextArea2.setText(this.leerArrayList(this._discos));
+            this.jTextArea3.setText(this.leerArrayList(this._maquinas));
+            
+        }
+    }
+    
     /**
      * Initializes the applet ActualizadorJNLP
      */
     @Override
     public void init() {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -48,6 +107,46 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        try {
+           
+            leer_datos_maquina();
+            runner();
+            //LeerArchivos lee = new LeerArchivos(this,this.jTextArea1 ,this.jTextArea2, this.jTextArea3);
+            
+            ///////////////////////////////////////////////////////////////////
+            
+            /*his._aplicaciones = lee.getAplicaciones();
+            this.jTextArea1.setText("1---!"+this.leerArrayList(this._aplicaciones));
+            this._discos=lee.getDiscos();
+            this.jTextArea2.setText("2---!"+this.leerArrayList(this._discos));
+            this._maquinas= lee.getMaquinas();
+            this.jTextArea3.setText("3---!"+this.leerArrayList(this._maquinas));
+            System.out.println("3");
+            System.out.println(_maquinas);*/
+            ////////////////////////////////////////////////////////////////////
+      
+            
+            //this._discos=lee.getDiscos();
+            //this._maquinas= lee.getMaquinas();  
+            //this.jTextArea1.setText(this.leerArrayList(this._aplicaciones));
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void leer_datos_maquina() throws UnknownHostException {
+        InetAddress localHost = InetAddress.getLocalHost();
+        String maquina = localHost.getHostName().toString();
+        System.out.println(maquina);
+        String ip = localHost.getHostAddress();
+        System.out.println(ip);
+        String usr = System.getProperty("user.name");
+        System.out.println(usr);
+        String usr2 = System.getenv("USERNAME");
+        System.out.println(usr2);
+        this.jTextField1.setText(maquina+"");
+        this.jTextField3.setText(maquina+"");
+        this.jTextField2.setText((usr != null)?usr+"":usr2+"");
     }
 
     /**
@@ -71,8 +170,8 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JButton();
-        jToggleButton2 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -95,6 +194,11 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         jTextField2.setText("AVIANCA/wcadena");
 
         jButton1.setText("Solicitar Ayuda");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,9 +245,18 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         jTextField3.setText("XXYXYX-HJY");
 
         jToggleButton1.setText("Actualizar");
-       
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setText("Analizar");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -228,7 +341,26 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         jTabbedPane5.getAccessibleContext().setAccessibleName("Inicio");
     }// </editor-fold>//GEN-END:initComponents
 
- 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            //para analizar la maquina
+            leer_datos_maquina();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        runner();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                  
+    private void jToggleButton1ActionPerformed(){
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -249,8 +381,8 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton jToggleButton1;
-    private javax.swing.JButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

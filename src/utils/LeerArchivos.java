@@ -5,12 +5,16 @@
  */
 package utils;
 
+import ini.ActualizadorJNLP;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JTextArea;
 import model.Aplicacion;
 import model.Disco;
 import model.Maquina;
@@ -19,13 +23,52 @@ import model.Maquina;
  *
  * @author wcadena
  */
-public class LeerArchivos {
+public class LeerArchivos implements Runnable {
 
     public LeerArchivos() {
+        this._aplicaciones = new ArrayList<Aplicacion>();
+        this._discos = new ArrayList<Disco>();
+        this._maquinas  =new ArrayList<Maquina>();
         this.cargarTraductores();
     }
+    
 
     public List<String> traductores;
+    
+    private ArrayList<Aplicacion> _aplicaciones;
+    private ArrayList<Disco>    _discos;
+    private ArrayList<Maquina>  _maquinas;
+    private ActualizadorJNLP aThis; 
+    private JTextArea jTextArea1; 
+    private JTextArea jTextArea2; 
+    private JTextArea jTextArea3;
+
+    public ArrayList<Aplicacion> getAplicaciones() {
+        return _aplicaciones;
+    }
+
+    public ArrayList<Disco> getDiscos() {
+        return _discos;
+    }
+
+    public ArrayList<Maquina> getMaquinas() {
+        return _maquinas;
+    }
+    
+    
+
+    public LeerArchivos(ActualizadorJNLP aThis, JTextArea jTextArea1, JTextArea jTextArea2, JTextArea jTextArea3) throws InterruptedException {
+        this.aThis = aThis;
+        this.jTextArea1 = jTextArea1;
+        this.jTextArea2 = jTextArea2;
+        this.jTextArea3 = jTextArea3;
+        this.arrancaConLectura();
+    }
+    
+    
+
+   
+    
 
     public void setTraductores(String traductor) {
         this.traductores.add(traductor);
@@ -80,6 +123,7 @@ public class LeerArchivos {
         
 
     }
+    
     public ArrayList<Aplicacion> setAplicacion(String dato) {
         ArrayList<Aplicacion> lista = new ArrayList<Aplicacion>();
         //model.Aplicacion a =new model.Aplicacion();
@@ -157,6 +201,7 @@ public class LeerArchivos {
                 apli = setAplicacion(contenidoarchivo);
                 
                 Iterator<Aplicacion> nombreIterator = apli.iterator();
+                this._aplicaciones = apli;
                 while(nombreIterator.hasNext()){
                         Aplicacion elemento = nombreIterator.next();
                         System.out.println("+->"+elemento);
@@ -168,6 +213,7 @@ public class LeerArchivos {
                     //System.out.println("****"+m.group(j).trim().length());
                     if(m.group(j).trim()!= null&&m.group(j).trim().length()>64){
                         di = this.setDisco(m.group(i++).trim());
+                        this._discos.add(di);
                         System.out.println("=->"+di.toString());
                     }                    
                 }                
@@ -190,7 +236,11 @@ public class LeerArchivos {
             mod.setProcessor_type(m.group(i++).trim());
             mod.setPhysical_memory(m.group(i++).trim());
             mod.setVideo_driver(m.group(i++).trim());/**/
+            
             System.out.println("->"+mod.toString().trim());
+            
+            if(mod != null)
+                this._maquinas.add(mod);
            }            
         }
         //m.appendTail(result);
@@ -202,36 +252,34 @@ public class LeerArchivos {
    
     
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //new LeerArchivos().
         LeerArchivos.LeerArchivos(args);
         //ParseDocument.main_test(args);
         
     }
-    public static void LeerArchivos(String[] args) {
+    public static void LeerArchivos(String[] args) throws InterruptedException {                
+        LeerArchivos a =new LeerArchivos();
+        a.arranca();
+    }
+    public void arranca() throws InterruptedException{
+        LeerArchivos p = new LeerArchivos();                
+        PruebaRuntime pr = new utils.PruebaRuntime(this);
         
-        LeerArchivos p = new LeerArchivos();
-        /*p.setTraductores("NAD\\(FL\\(\\(\\((.*?)\\-\\W"//1
-                + "ATT\\(2\\(\\((.*?)\\W\\W"//2
-                + "DTM\\((.*?)\\W(.*?)\\W"//3
-                + "\\WLOC\\W[1][7][489]\\W(.*?)\\W"//4
-                + "\\WLOC\\W[1][7][489]\\W(.*?)\\W"//5
-                + "\\WLOC\\W[1][7][489]\\W(.*?)\\W"//6
-                + "\\WNAT\\W[2]\\W(.*?)\\W"//7
-                + "\\WRFF\\WAVF\\W(.*?)\\W"//8
-                + "\\WDOC\\WP\\W[1][1][0]\\W[1][1][1]\\W(.*?)\\W"//9
-                + "\\WDTM\\W[3][6]\\W(.*?)\\W"//10
-                + "\\WLOC\\W[9][1]\\W(.*?)\\W"//11
-                + "");*/
-        List<String> tar = p.traductores;
-        PruebaRuntime pr = new utils.PruebaRuntime();
-        String dato = pr.getContenido();
-        int j=0;
-        for (String dat : tar) {
-            //System.out.println(j++);
-            new LeerArchivos().parseDoc(dato, dat);
-        }
-
+        Thread thread1 = new Thread(pr, "Thread 1");
+        thread1.join();
+        thread1.run();
+        
+    }
+    public void arrancaConLectura() throws InterruptedException{
+        LeerArchivos p = new LeerArchivos();      
+        this.jTextArea1.setText("AAAAAAAAAAAAAAAAAAA");
+        PruebaRuntime pr = new PruebaRuntime(this,this.aThis,this.jTextArea1 ,this.jTextArea2, this.jTextArea3);
+        
+        Thread thread1 = new Thread(pr, "Thread 1");
+        
+        thread1.run();
+        
     }
 /*
     
@@ -268,4 +316,15 @@ public class LeerArchivos {
         System.out.println(result);
     }
 */
+
+    @Override
+    public void run() {
+       LeerArchivos a =new LeerArchivos();
+        try {
+            a.arranca();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LeerArchivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
 }
