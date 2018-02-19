@@ -17,6 +17,7 @@ import model.Aplicacion;
 import model.Disco;
 import model.Maquina;
 import utils.LeerArchivos;
+import utils.LeerConfig;
 import utils.PruebaRuntime;
 
 /*
@@ -74,33 +75,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         }
     }
     
-    public String getAppVersion() throws IOException {
-
-        String versionString = null;
-
-        //to load application's properties, we use this class
-        Properties mainProperties = new Properties();
-
-        FileInputStream file;
-
-        //the base folder is ./, the root of the main.properties file  
-        String path = "./util/main.properties";
-
-        //load the file handle for main.properties
-        file = new FileInputStream(path);
-
-        //load all the properties from this file
-        mainProperties.load(file);
-
-        //we have loaded the properties, so close the file handle
-        file.close();
-
-        //retrieve the property we are intrested, the app.version
-        versionString = mainProperties.getProperty("app.version");
-
-        System.out.println("-----"+versionString);
-        return versionString;
-    }
+    private String Version,User,Password,Site;
     
     /**
      * Initializes the applet ActualizadorJNLP
@@ -109,7 +84,16 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
     public void init() {
         
         try {
-            String a = this.getAppVersion();
+            this.Version = LeerConfig.getAppVersion();
+            this.User = LeerConfig.getUsuario();
+            this.Password = LeerConfig.getPassword();
+            this.Site = LeerConfig.getSite();
+            
+            System.out.println("->"+this.Version);
+            System.out.println("->"+this.User);
+            System.out.println("->"+this.Password);
+            System.out.println("->"+this.Site);
+            
         } catch (IOException ex) {
             Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
         }
