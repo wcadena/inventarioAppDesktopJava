@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/wcadena/Documents/Actualizador/nbproject/jnlp-impl.xml</file>
-            <file>file:/C:/Users/wcadena/Documents/Actualizador/src/utils/PruebaRuntime.java</file>
-            <file>file:/C:/Users/wcadena/Documents/Actualizador/src/utils/LeerArchivos.java</file>
-            <file>file:/C:/Users/wcadena/Documents/Actualizador/src/ActualizadorJNLP.java</file>
-            <file>file:/C:/Users/wcadena/Documents/Actualizador/src/model/Aplicacion.java</file>
+            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/utils/PruebaRuntime.java</file>
+            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/utils/LeerArchivos.java</file>
+            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/actualizador/Actualizador.java</file>
         </group>
     </open-files>
 </project-private>

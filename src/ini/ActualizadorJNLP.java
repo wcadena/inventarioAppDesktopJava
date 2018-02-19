@@ -49,6 +49,9 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
     
     
     public void runner() {
+        
+        //parametros
+        
         PruebaRuntime pru = new PruebaRuntime();
         LeerArchivos arc =new LeerArchivos();
         

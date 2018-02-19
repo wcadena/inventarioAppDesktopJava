@@ -5,17 +5,29 @@
  */
 package actualizador;
 
+import ini.ActualizadorJNLP;
+import javax.swing.JFrame;
+
 /**
  *
  * @author wcadena
  */
 public class Actualizador {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         // TODO code application logic here
+        ActualizadorJNLP applet = new ActualizadorJNLP();
+        applet.init();
+
+        JFrame frame = new JFrame("Mi PC ");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add( applet );
+        frame.pack();
+        frame.setLocationRelativeTo( null );
+        frame.setVisible( true );
+
+        applet.start();
     }
     
 }

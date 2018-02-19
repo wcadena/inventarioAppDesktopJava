@@ -70,4 +70,19 @@
     nbproject/build-impl.xml file. 
 
     -->
+	<target name="-post-jar">        
+		<echo file="${dist.dir}/run.bat">start java -splash:apple-touch-icon.png -cp ${application.title}.jar actualizador.Actualizador </echo>    
+	</target> 	
+	
+	
+	
+	
+	<target name="-post-compile">
+		<copy todir="${dist.dir}/util">
+			<fileset dir="util"/>
+		</copy>
+	</target>
+	
+	
+	
 </project>
