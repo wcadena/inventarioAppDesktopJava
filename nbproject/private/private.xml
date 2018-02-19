@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/utils/PruebaRuntime.java</file>
-            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/utils/LeerArchivos.java</file>
-            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/actualizador/Actualizador.java</file>
+            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/ini/ActualizadorJNLP.java</file>
+            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/src/utils/LeerConfig.java</file>
+            <file>file:/D:/Users/Anibal/misDoc/NetBeansProjects/inventarioAppDesktopJava/util/main.properties</file>
         </group>
     </open-files>
 </project-private>
