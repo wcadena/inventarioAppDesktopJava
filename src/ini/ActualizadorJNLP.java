@@ -3,11 +3,14 @@ package ini;
 
 
 import java.awt.event.ActionEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Aplicacion;
@@ -71,12 +74,45 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         }
     }
     
+    public String getAppVersion() throws IOException {
+
+        String versionString = null;
+
+        //to load application's properties, we use this class
+        Properties mainProperties = new Properties();
+
+        FileInputStream file;
+
+        //the base folder is ./, the root of the main.properties file  
+        String path = "./util/main.properties";
+
+        //load the file handle for main.properties
+        file = new FileInputStream(path);
+
+        //load all the properties from this file
+        mainProperties.load(file);
+
+        //we have loaded the properties, so close the file handle
+        file.close();
+
+        //retrieve the property we are intrested, the app.version
+        versionString = mainProperties.getProperty("app.version");
+
+        System.out.println("-----"+versionString);
+        return versionString;
+    }
+    
     /**
      * Initializes the applet ActualizadorJNLP
      */
     @Override
     public void init() {
         
+        try {
+            String a = this.getAppVersion();
+        } catch (IOException ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
