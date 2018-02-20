@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package main.java.utils;
 
-import ini.ActualizadorJNLP;
+import main.java.ini.ActualizadorJNLP;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -264,7 +264,7 @@ public class LeerArchivos implements Runnable {
     }
     public void arranca() throws InterruptedException{
         LeerArchivos p = new LeerArchivos();                
-        PruebaRuntime pr = new utils.PruebaRuntime(this);
+        PruebaRuntime pr = new PruebaRuntime(this);
         
         Thread thread1 = new Thread(pr, "Thread 1");
         thread1.join();

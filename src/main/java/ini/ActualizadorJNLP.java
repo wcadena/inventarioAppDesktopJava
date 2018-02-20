@@ -1,29 +1,25 @@
-package ini;
+package main.java.ini;
 
 
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.awt.event.ActionEvent;
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
+
 import java.net.InetAddress;
-import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.java.utils.LeerArchivos;
 import model.Aplicacion;
 import model.Disco;
 import model.Maquina;
-import utils.LeerArchivos;
+
 import utils.LeerConfig;
-import utils.PruebaRuntime;
+import main.java.utils.PruebaRuntime;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -82,42 +78,15 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
     
     private String Version,User,Password,Site;
     
-    public void  conectado(){
+    private void getPlainTextResponse() {
         try {
-      URL url = new URL("http://localhost:8080/v1/books");
-      HttpURLConnection con = (HttpURLConnection) url.openConnection();
-      // Set the request method to POST as required from the API
-      con.setRequestMethod("POST");
 
-      // Set the Content-Type to "application/json" as required from the API
-      con.setRequestProperty("Content-Type", "application/json");
-      con.setDoOutput(true);
+            
 
-      OutputStream os = con.getOutputStream();
-      // The book we want to create in JSON format
-      // String book = "{\"name\":\"Effective Java\",\"author\":\"Joshua Bloch\"}";
-      // Creates new Book instance
-      //Book book = new Book(null, "Effective Java", "Joshua Bloch");
-      //https://github.com/FasterXML/jackson-databind
-      ObjectMapper mapper = new ObjectMapper();
-      //os.write(mapper.writeValueAsBytes(book));
-      os.flush();
-      os.close();
-
-      int responseCode = con.getResponseCode();
-
-      System.out.println("Response Code :" + responseCode);
-
-      if (responseCode == HttpURLConnection.HTTP_CREATED) {
-        System.out.println("Created book successfully.");
-      } else {
-        System.out.println("Created book failed.");
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
-    }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//end of method
     
     /**
      * Initializes the applet ActualizadorJNLP
@@ -134,7 +103,9 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             System.out.println("->"+this.Version);
             System.out.println("->"+this.User);
             System.out.println("->"+this.Password);
-            System.out.println("->"+this.Site);                        
+            System.out.println("->"+this.Site);     
+           
+            System.out.println("conectado");
             
         } catch (IOException ex) {
             Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);

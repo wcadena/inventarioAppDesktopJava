@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package actualizador;
+package main.java.actualizador;
 
-import ini.ActualizadorJNLP;
+import main.java.ini.ActualizadorJNLP;
 import javax.swing.JFrame;
 
 /**
