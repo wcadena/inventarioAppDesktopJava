@@ -71,7 +71,7 @@
 
     -->
 	<target name="-post-jar">        
-		<echo file="${dist.dir}/run.bat">start java -splash:apple-touch-icon.png -cp ${application.title}.jar actualizador.Actualizador </echo>    
+		<echo file="${dist.dir}/run.bat">start java -splash:apple-touch-icon.png -cp ${application.title}.jar main.java.actualizador.Actualizador </echo>    
 	</target> 	
 	
 	

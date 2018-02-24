@@ -79,4 +79,12 @@ public class LeerConfig {
     public static String getSite() throws IOException {
         return LeerConfig.getData("main.properties","app.site");
     } 
+    
+    public static String getClienteId() throws IOException {
+        return LeerConfig.getData("main.properties","app.client_id");
+    }
+    
+    public static String getClienteSecret() throws IOException {
+        return LeerConfig.getData("main.properties","app.client_secret");
+    }
 }
