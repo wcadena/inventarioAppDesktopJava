@@ -100,6 +100,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             this.Password = LeerConfig.getPassword();
             this.Site = LeerConfig.getSite();
             
+            
             System.out.println("->"+this.Version);
             System.out.println("->"+this.User);
             System.out.println("->"+this.Password);
