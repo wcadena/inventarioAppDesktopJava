@@ -6,7 +6,9 @@
 package main.java.utils;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -183,31 +185,45 @@ public class GettingStarted {
     public void getAgents() {
         // Test to see if you have obtained a token
         if (!tokenResponse.accessToken.isEmpty()) {
-            String apiURL = "/services/{version}/agents";
+            String apiURL = "http://inventario.ecuatask.localhost/api/equipos";
+            
             // baseURL was returned with your successful token request
-            String endpoint = this.tokenResponse.resourceServerBaseUri + apiURL;
+            //String endpoint = this.tokenResponse.resourceServerBaseUri + apiURL;
+            String endpoint = apiURL;
             try {
                 URL agentResourceURL = new URL(endpoint);
 
                 // Creating Request
                 // Setting necessary headers
-                HttpsURLConnection connection = (HttpsURLConnection) agentResourceURL
-                        .openConnection();
+                HttpURLConnection connection = (HttpURLConnection) agentResourceURL.openConnection();
                 connection.setRequestMethod("GET");
-                connection.setRequestProperty("Accept",
-                        "application/json, text/javascript, */*; q=0.01");
-                connection.setRequestProperty("Content-Type",
-                        "application/x-www-form-urlencoded; charset=UTF-8");
-                connection.setRequestProperty("Authorization", "bearer "
-                        + this.tokenResponse.accessToken);
-
+                connection.setRequestProperty("Accept","application/json, text/javascript, */*; q=0.01");
+                connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+                connection.setRequestProperty("Authorization", "Bearer " + this.tokenResponse.accessToken);
+                System.out.println("Bearer " + this.tokenResponse.accessToken);
+                
                 connection.setDoOutput(true);
                 System.out.println("POST Request to get Token");
-                System.out.println("Response Code : "
-                        + connection.getResponseCode());
+                System.out.println("Response Code : " + connection.getResponseCode());
                 System.out.println(connection.getResponseMessage());
-                BufferedReader in = new BufferedReader(new InputStreamReader(
-                        connection.getInputStream()));
+                
+                /* ////////////////
+                InputStream indd = connection.getErrorStream();
+
+                if (indd == null) {
+                    indd = connection.getInputStream();
+                }
+                ByteArrayOutputStream resultdd = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = indd.read(buffer)) != -1) {
+                    resultdd.write(buffer, 0, length);
+                }
+                System.out.println("--*-*--->" + resultdd.toString());;//para ver el error
+            
+                ////////////////*/
+                
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String inputLine;
                 StringBuffer response = new StringBuffer();
                 while ((inputLine = in.readLine()) != null) {
