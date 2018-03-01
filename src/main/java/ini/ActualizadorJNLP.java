@@ -13,13 +13,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.java.utils.ConectarRestfull;
+import main.java.utils.EscribirArchivos;
 import main.java.utils.LeerArchivos;
+import main.java.utils.LeerConfig;
 import model.Aplicacion;
 import model.Disco;
 import model.Maquina;
 
-import utils.LeerConfig;
+
 import main.java.utils.PruebaRuntime;
+import org.json.JSONException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -36,6 +40,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
     private ArrayList<Aplicacion> _aplicaciones;
     private ArrayList<Disco>    _discos;
     private ArrayList<Maquina>  _maquinas;
+    private main.java.model.TokenResponse tokenResponse;
     
     
     public String leerArrayList(List dato){
@@ -94,23 +99,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
     @Override
     public void init() {
         
-        try {
-            this.Version = LeerConfig.getAppVersion();
-            this.User = LeerConfig.getUsuario();
-            this.Password = LeerConfig.getPassword();
-            this.Site = LeerConfig.getSite();
-            
-            
-            System.out.println("->"+this.Version);
-            System.out.println("->"+this.User);
-            System.out.println("->"+this.Password);
-            System.out.println("->"+this.Site);     
-           
-            System.out.println("conectado");
-            
-        } catch (IOException ex) {
-            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         
         
         
         /* Set the Nimbus look and feel */
@@ -169,6 +158,39 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             //this._maquinas= lee.getMaquinas();  
             //this.jTextArea1.setText(this.leerArrayList(this._aplicaciones));
         } catch (UnknownHostException ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            this.Version = LeerConfig.getAppVersion();
+            this.User = LeerConfig.getUsuario();
+            this.Password = LeerConfig.getPassword();
+            this.Site = LeerConfig.getSite();
+            
+            
+              
+           
+            ConectarRestfull conn = new ConectarRestfull();
+            try{
+                if(LeerConfig.getExistConfigUser()){
+                    main.java.model.TokenResponse utiltk = LeerConfig.getToken();                                                                                     
+                }else{                       
+                    EscribirArchivos.saveParamChanges();
+                    this.tokenResponse = conn.getToken();
+                    EscribirArchivos.WritePropertiesFile("token_type", this.tokenResponse.getToken_type());
+                    EscribirArchivos.WritePropertiesFile("expires_in", this.tokenResponse.getExpiresIn() + "");
+                    EscribirArchivos.WritePropertiesFile("access_token", this.tokenResponse.getAccessToken());
+                    EscribirArchivos.WritePropertiesFile("refresh_token", this.tokenResponse.getRefreshToken());
+                }
+                
+                
+                jLabel3.setText("Conectado a sistema");
+            }catch(Exception ex){
+                jLabel3.setText("Error al conectar, revisar conectividad con servidor.");
+                Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (IOException ex) {
             Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

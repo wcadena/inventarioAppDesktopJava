@@ -185,7 +185,7 @@ public class GettingStarted {
     public void getAgents() {
         // Test to see if you have obtained a token
         if (!tokenResponse.accessToken.isEmpty()) {
-            String apiURL = "http://inventario.ecuatask.localhost/api/equipos";
+            String apiURL = "http://inventario.ecuatask.localhost/api/equipo_no_serie?no_serie=MXL2091N5M";
             
             // baseURL was returned with your successful token request
             //String endpoint = this.tokenResponse.resourceServerBaseUri + apiURL;
