@@ -233,13 +233,7 @@ public class GettingStarted {
 
                 if (response.toString().isEmpty()) {
                     System.out.println("Response is empty");
-                } else {
-                    // Success. Do something with the response.
-                    // This method returns JSON. You will most likely want to
-                    // deserialize the JSON and work with the agent objects. For 
-                    // simplicity this example just writes the JSON string directly to a 
-                    // label on the page.
-                    // print result
+                } else {                    
                     System.out.println(response.toString());
                 }
                 connection.disconnect();

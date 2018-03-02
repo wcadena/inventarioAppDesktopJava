@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.java.model.api.EquipoApi;
+import main.java.model.api.ErrorApi;
 import main.java.utils.ConectarRestfull;
 import main.java.utils.EscribirArchivos;
 import main.java.utils.LeerArchivos;
@@ -136,28 +138,12 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             ex.printStackTrace();
         }
         try {
-           
-            leer_datos_maquina();
-            runner();
-            //LeerArchivos lee = new LeerArchivos(this,this.jTextArea1 ,this.jTextArea2, this.jTextArea3);
+            if (false) {
+                leer_datos_maquina();//lee datos maquina
+                runner();
+            }            
             
-            ///////////////////////////////////////////////////////////////////
-            
-            /*his._aplicaciones = lee.getAplicaciones();
-            this.jTextArea1.setText("1---!"+this.leerArrayList(this._aplicaciones));
-            this._discos=lee.getDiscos();
-            this.jTextArea2.setText("2---!"+this.leerArrayList(this._discos));
-            this._maquinas= lee.getMaquinas();
-            this.jTextArea3.setText("3---!"+this.leerArrayList(this._maquinas));
-            System.out.println("3");
-            System.out.println(_maquinas);*/
-            ////////////////////////////////////////////////////////////////////
-      
-            
-            //this._discos=lee.getDiscos();
-            //this._maquinas= lee.getMaquinas();  
-            //this.jTextArea1.setText(this.leerArrayList(this._aplicaciones));
-        } catch (UnknownHostException ex) {
+        } catch (Exception ex) {//UnknownHostException
             Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -173,7 +159,8 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             ConectarRestfull conn = new ConectarRestfull();
             try{
                 if(LeerConfig.getExistConfigUser()){
-                    main.java.model.TokenResponse utiltk = LeerConfig.getToken();                                                                                     
+                    main.java.model.TokenResponse utiltk = LeerConfig.getToken();   
+                    this.tokenResponse = utiltk;
                 }else{                       
                     EscribirArchivos.saveParamChanges();
                     this.tokenResponse = conn.getToken();
@@ -182,9 +169,16 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
                     EscribirArchivos.WritePropertiesFile("access_token", this.tokenResponse.getAccessToken());
                     EscribirArchivos.WritePropertiesFile("refresh_token", this.tokenResponse.getRefreshToken());
                 }
+                String maquina = this.jTextField1.getText().trim();
+                Object resequipo = conn.getEquipo_no_serie(this.tokenResponse, maquina);
+                if (resequipo.getClass() == EquipoApi.class) {
+                    EquipoApi eq = (EquipoApi) resequipo;
+                    jLabel3.setText("Conectado / Equipo Codigo: ["+eq.data.codigo_avianca+"]");
+                }else{
+                    ErrorApi ers= (ErrorApi) resequipo;
+                    jLabel3.setText("Conectado / Equipo no encontrado: ["+ers.error+"], Codigo: ["+ers.code+"]");
+                }
                 
-                
-                jLabel3.setText("Conectado a sistema");
             }catch(Exception ex){
                 jLabel3.setText("Error al conectar, revisar conectividad con servidor.");
                 Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
