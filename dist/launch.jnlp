@@ -2,11 +2,12 @@
 <jnlp codebase="http://inventario.ecuatask.localhost/desktop_app/" href="launch.jnlp" spec="1.0+">
     <information>
         <title>Actualizador</title>
-        <vendor>wcadena</vendor>
-        <homepage href=""/>
-        <description>Actualizador</description>
+        <vendor>wcadena@outlook.com</vendor>
+        <homepage href="http://ecuatask.com"/>
+        <description>Sistema de Actualizacion de inventqarios.</description>
         <description kind="short">Actualizador</description>
-    <icon href="apple-touch-icon.png" kind="splash"/>
+    <icon href="splashScreen.png" kind="splash"/>
+<icon href="apple-touch-icon-180x180.png" kind="default"/>
 </information>
     <update check="always"/>
     <security>
@@ -47,7 +48,7 @@
 <jar href="lib/http-core-4.1.jar"/>
 <jar href="lib/gson-2.6.2.jar"/>
 </resources>
-    <applet-desc height="300" main-class="ini.ActualizadorJNLP" name="Actualizador" width="300">
+    <applet-desc height="300" main-class="main.java.ini.ActualizadorJNLP" name="Actualizador" width="300">
     <param name="user" value="wcadena"/>
 <param name="pass" value="clave"/>
 <param name="server" value=""/>
