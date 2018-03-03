@@ -39,7 +39,18 @@
 <jar href="lib/jersey-container-servlet-core.jar"/>
 <jar href="lib/jersey-server.jar"/>
 <jar href="lib/eclipselink.jar"/>
-<jar href="lib/gson-2.6.2-javadoc.jar"/>
+<jar href="lib/org.apache.commons.httpclient.jar"/>
+<jar href="lib/commons-codec-1.6.jar"/>
+<jar href="lib/commons-logging-1.1.1.jar"/>
+<jar href="lib/httpclient-4.2.5.jar"/>
+<jar href="lib/httpclient-cache-4.2.5.jar"/>
+<jar href="lib/httpcore-4.2.4.jar"/>
+<jar href="lib/httpmime-4.2.5.jar"/>
+<jar href="lib/json-simple-1.1.1.jar"/>
+<jar href="lib/org.json.jar"/>
+<jar href="lib/httpclient-4.4.jar"/>
+<jar href="lib/http-core-4.1.jar"/>
+<jar href="lib/gson-2.6.2.jar"/>
 </resources>
     <applet-desc height="300" main-class="ini.ActualizadorJNLP" name="Actualizador" width="300">
     <param name="user" value="wcadena"/>

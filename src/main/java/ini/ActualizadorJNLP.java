@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.java.model.api.EquipoApi;
 import main.java.model.api.ErrorApi;
+import main.java.model.api.hilos.ActualizarAplicaciones;
 import main.java.utils.ConectarRestfull;
 import main.java.utils.EscribirArchivos;
 import main.java.utils.LeerArchivos;
@@ -37,12 +38,13 @@ import org.json.JSONException;
  *
  * @author wcadena
  */
-public class ActualizadorJNLP extends javax.swing.JApplet {
+public class ActualizadorJNLP extends javax.swing.JApplet  {
 
     private ArrayList<Aplicacion> _aplicaciones;
     private ArrayList<Disco>    _discos;
     private ArrayList<Maquina>  _maquinas;
     private main.java.model.TokenResponse tokenResponse;
+    private EquipoApi _equipo;
     
     
     public String leerArrayList(List dato){
@@ -99,11 +101,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
      * Initializes the applet ActualizadorJNLP
      */
     @Override
-    public void init() {
-        
-         
-        
-        
+    public void init() {                                 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -136,11 +134,15 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             });
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
+        }        
+        this.iniciarConeccionApi();
+    }
+    
+    private void iniciarConeccionApi(){
         try {
-            if (false) {
+            if (true) {
                 leer_datos_maquina();//lee datos maquina
-                runner();
+                //runner();
             }            
             
         } catch (Exception ex) {//UnknownHostException
@@ -173,6 +175,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
                 Object resequipo = conn.getEquipo_no_serie(this.tokenResponse, maquina);
                 if (resequipo.getClass() == EquipoApi.class) {
                     EquipoApi eq = (EquipoApi) resequipo;
+                    this._equipo =eq;
                     jLabel3.setText("Conectado / Equipo Codigo: ["+eq.data.codigo_avianca+"]");
                 }else{
                     ErrorApi ers= (ErrorApi) resequipo;
@@ -189,7 +192,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         }
     }
     
-    public void leer_datos_maquina() throws UnknownHostException {
+    public void leer_datos_maquina() throws UnknownHostException, IOException {
         InetAddress localHost = InetAddress.getLocalHost();
         String maquina = localHost.getHostName().toString();
         System.out.println(maquina);
@@ -199,6 +202,9 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         System.out.println(usr);
         String usr2 = System.getenv("USERNAME");
         System.out.println(usr2);
+        if(LeerConfig.getMaquina() != null){
+            maquina = LeerConfig.getMaquina();
+        }
         this.jTextField1.setText(maquina+"");
         this.jTextField3.setText(maquina+"");
         this.jTextField2.setText((usr != null)?usr+"":usr2+"");
@@ -248,7 +254,8 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
 
         jTextField2.setText("AVIANCA/wcadena");
 
-        jButton1.setText("Solicitar Ayuda");
+        jButton1.setText("Cambiar Nombre de máquina");
+        jButton1.setActionCommand("Cambiar Nombre de máquina");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -302,7 +309,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
         jToggleButton1.setText("Actualizar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                EnviarArchivosAPI(evt);
             }
         });
 
@@ -363,8 +370,8 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -373,11 +380,11 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Datos", jPanel3);
@@ -398,6 +405,11 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        System.out.println("------------------------74ahuml-->Accion ");
+        String maquina1 = this.jTextField1.getText();
+        this.jTextField3.setText(maquina1);
+        EscribirArchivos.WritePropertiesFileMain("app.maquina",maquina1);
+        iniciarConeccionApi();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -407,15 +419,63 @@ public class ActualizadorJNLP extends javax.swing.JApplet {
             leer_datos_maquina();
         } catch (UnknownHostException ex) {
             Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
         }
         runner();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void EnviarArchivosAPI(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarArchivosAPI
+        // TODO add your handling code here:
+        /*System.out.println("-------------------------->Accion ");
+        
+        this.jToggleButton1.setText("En Ejecucion");
+        this.jToggleButton1.setEnabled(false);
+        try {
+            Thread.sleep(600);
+            ConectarRestfull conn = new ConectarRestfull();
+            for (Aplicacion temp : this._aplicaciones) {
+                String result =conn.setAplicacion(this.tokenResponse, this._equipo, temp.getAplicacion());
+                
+                int intIndex = result.indexOf("\"error\":\"");
+                
+                if (intIndex > 0) {
+                    System.out.println("---------------->"+intIndex);
+                    Thread.sleep(60000);
+                    conn.setAplicacion(this.tokenResponse, this._equipo, temp.getAplicacion());
+                } 
+                
+                
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        this.jToggleButton1.setText("Actualizado");
+        this.jToggleButton1.setEnabled(true);
+        */
+        
+        this.jToggleButton1.setText("En Ejecucion");
+        this.jToggleButton1.setEnabled(false);
+        
+        ActualizarAplicaciones r = new ActualizarAplicaciones(this.tokenResponse, this._equipo, _aplicaciones);
+
+
+        Thread thread1 = new Thread(r, "Thread 1");
+
+        thread1.start();
+        this.jToggleButton1.setText("Actualizado!!!!!!!!");
+        this.jToggleButton1.setEnabled(true);
+        
+        
+    }//GEN-LAST:event_EnviarArchivosAPI
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
+        System.out.println("----*-*-*-*-**********===========>Cambiar nombre");
     }                                  
-    private void jToggleButton1ActionPerformed(){
-        
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

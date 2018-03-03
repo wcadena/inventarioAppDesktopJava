@@ -204,7 +204,7 @@ public class LeerArchivos implements Runnable {
                 this._aplicaciones = apli;
                 while(nombreIterator.hasNext()){
                         Aplicacion elemento = nombreIterator.next();
-                        System.out.println("+->"+elemento);
+                        //System.out.println("+->"+elemento);
                 }
                 
             }
@@ -214,7 +214,7 @@ public class LeerArchivos implements Runnable {
                     if(m.group(j).trim()!= null&&m.group(j).trim().length()>64){
                         di = this.setDisco(m.group(i++).trim());
                         this._discos.add(di);
-                        System.out.println("=->"+di.toString());
+                        //System.out.println("=->"+di.toString());
                     }                    
                 }                
             }

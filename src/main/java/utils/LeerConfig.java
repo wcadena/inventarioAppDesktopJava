@@ -84,6 +84,9 @@ public class LeerConfig {
         return versionString;
     }
 
+    public static String getMaquina() throws IOException {
+        return LeerConfig.getData("main.properties","app.maquina");
+    }
     public static String getUsuario() throws IOException {
         return LeerConfig.getData("main.properties","app.user");
     } 
@@ -101,6 +104,9 @@ public class LeerConfig {
     public static String getClienteSecret() throws IOException {
         return LeerConfig.getData("main.properties","app.client_secret");
     }
+    public static String getOpcionesCheckListId() throws IOException {
+        return LeerConfig.getData("main.properties","opciones_check_lists.opciones_check_list_id.Aplicaciones");
+    } 
     
     public static boolean isInteger(String s) {
     try { 
