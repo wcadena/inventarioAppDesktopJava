@@ -42,7 +42,10 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.java.model.api.ErrorApi;
+import main.java.model.api.hilos.ActualizarAplicaciones;
 /**
  *
  * @author Anibal
@@ -164,7 +167,7 @@ public class ConectarRestfull {
         String inputLine;
         StringBuffer response = new StringBuffer();
         while ((inputLine = in.readLine()) != null) {
-            //System.out.println("======>"+inputLine);
+            
             response.append(inputLine);
         }
         in.close();
@@ -200,9 +203,9 @@ public class ConectarRestfull {
         List<NameValuePair> nvPairList = new ArrayList<NameValuePair>();
         NameValuePair nv2 = new BasicNameValuePair("no_serie", equipo);
         nvPairList.add(nv2);
-        String URL = "http://inventario.ecuatask.localhost/api/equipo_no_serie";
+        String URL = LeerConfig.getSite()+"api/equipo_no_serie";
         String result = this.get(tokenResponse, URL, "no_serie="+equipo);
-        System.out.println("------>"+result);
+        
         Gson gson = new GsonBuilder().create();
         
         int intIndex = result.indexOf("\"error\":\"");
@@ -210,11 +213,7 @@ public class ConectarRestfull {
              return gson.fromJson(result, ErrorApi.class);
           }else{
              return gson.fromJson(result, EquipoApi.class);
-          }
-        
-        
-        //System.out.println(p);
-        //return p;
+          }                        
     }
     
     public String setAplicacion(main.java.model.TokenResponse tokenResponse,EquipoApi equipo, String aplicacion) throws URISyntaxException, Exception {
@@ -225,22 +224,19 @@ public class ConectarRestfull {
         nvPairList.add(nv2);
         nvPairList.add(nv3);
         nvPairList.add(nv4);
-        String URL = "http://inventario.ecuatask.localhost/api/check_list__opciones_check_lists";
+        String URL = LeerConfig.getSite()+"api/check_list__opciones_check_lists";
         String result = this.post(tokenResponse, URL, "check_list_id="+equipo.data.check_list_id+
                 "&opciones_check_list_id="+LeerConfig.getOpcionesCheckListId()+
-                "&valor1="+aplicacion);
-        System.out.println("----654858684648-->"+result);
+                "&valor1="+aplicacion);        
         return result;
     }
 
     public void setGetAction(main.java.model.TokenResponse tokenResponse, String URL, List<NameValuePair> parametros) throws URISyntaxException {
         // Test to see if you have obtained a token
         this.tokenResponse = tokenResponse;
-        URIBuilder builder = new URIBuilder(URL);
-        System.out.println("========>" + builder);
+        URIBuilder builder = new URIBuilder(URL);        
         if (!tokenResponse.getAccessToken().isEmpty()) {
-            String apiURL = URL;
-            System.out.println("---*/-*/-*/-*/-*/------>" + tokenResponse.getAccessToken());
+            String apiURL = URL;            
             // baseURL was returned with your successful token request
             //String endpoint = this.tokenResponse.resourceServerBaseUri + apiURL;
             String endpoint = apiURL;
@@ -273,7 +269,7 @@ public class ConectarRestfull {
                 while ((length = indd.read(buffer)) != -1) {
                     resultdd.write(buffer, 0, length);
                 }
-                System.out.println("--*-*--->" + resultdd.toString());;//para ver el error
+                
 
                 ////////////////
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -342,8 +338,9 @@ public class ConectarRestfull {
         }catch(Exception ex){
             error = ex.toString();
             in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            Logger.getLogger(ConectarRestfull.class.getName()).log(Level.SEVERE, null, "Error en post: ["+error+"]");
         }finally{
-            System.err.println("->>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+error);
+            //System.err.println("->>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+error);
         }
         
         
@@ -392,6 +389,7 @@ public class ConectarRestfull {
         }catch(Exception ex){
             error = ex.toString();
             in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            Logger.getLogger(ConectarRestfull.class.getName()).log(Level.SEVERE, null, "Error en get: ["+error+"]");
         }finally{
             System.err.println("->>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+error);
         }
@@ -404,7 +402,7 @@ public class ConectarRestfull {
         in.close();
 
         result = response.toString();
-        //System.out.println(result);
+        System.out.println(result);
         return result;       
         
         

@@ -38,15 +38,15 @@ public class GettingStarted {
     private String baseURL;
     private TokenResponse tokenResponse;
 
-    public GettingStarted() {
+    public GettingStarted() throws IOException {
         ///https://developer.niceincontact.com/API/CompleteRequestExampleCode
         vendorName = "ecuatask"; //Provide the vendor name
         appName = "ecuataskBooble"; //Provide the application name
         busNo = "Desarrollo"; //Provide the business unit
-        username = "wcadena@outlook.com"; //Provide the username
-        password = "wcadena"; //Provide the password
+        username = LeerConfig.getUsuario(); //Provide the username
+        password = LeerConfig.getPassword(); //Provide the password
         scope = "";
-        baseURL = "http://inventario.ecuatask.localhost/oauth/token";
+        baseURL = LeerConfig.getSite()+"oauth/token";
         tokenResponse = new TokenResponse();
     }
 
@@ -83,7 +83,8 @@ public class GettingStarted {
                     + "\",\"scope\":\"" + scope + "\",\"client_secret\":\"2KgXxmMpWaAqTr9VD5HcGDEd607E8WT3qHrFmxoV\",\"client_id\":\"5\"}";
             
                     //+ "\",\"scope\":\"" + scope + "\"}";
-            System.out.println("--------->" + postData);
+            
+                    
             //http://inventario.ecuatask.localhost/oauth/token?grant_type=password&client_id=11&client_secret=AD3exMOK8AQsZmfjCx7Fc3LUNhGMhcSfhW2uPbCT&username=wcadena@outlook.com&password=wcadena
             URL tokenURL = new URL(endpoint);
            // URL url = new URL(null, endpoint, new sun.net.www.protocol.https.Handler());
@@ -182,10 +183,10 @@ public class GettingStarted {
 
     // The variables baseURL and accessToken were returned with the successful
     // getToken request.
-    public void getAgents() {
+    public void getAgents() throws IOException {
         // Test to see if you have obtained a token
         if (!tokenResponse.accessToken.isEmpty()) {
-            String apiURL = "http://inventario.ecuatask.localhost/api/equipo_no_serie?no_serie=MXL2091N5M";
+            String apiURL = LeerConfig.getSite()+"api/equipo_no_serie?no_serie=MXL2091N5M";
             
             // baseURL was returned with your successful token request
             //String endpoint = this.tokenResponse.resourceServerBaseUri + apiURL;
@@ -255,7 +256,7 @@ public class GettingStarted {
         }
     }
 
-    public static void main(String[] args) throws JSONException {
+    public static void main(String[] args) throws JSONException, IOException {
         GettingStarted testObject = new GettingStarted();
         testObject.getToken();
         testObject.getAgents();

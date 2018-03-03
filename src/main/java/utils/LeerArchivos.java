@@ -127,15 +127,11 @@ public class LeerArchivos implements Runnable {
     public ArrayList<Aplicacion> setAplicacion(String dato) {
         ArrayList<Aplicacion> lista = new ArrayList<Aplicacion>();
         //model.Aplicacion a =new model.Aplicacion();
-        //System.out.println("******+=>"+dato);
         StringTokenizer st = new StringTokenizer(dato,"\n");
-        //System.out.println("******->"+st.nextToken());
-        //System.out.println("******->"+st.nextToken());
         boolean lee=false;
         while (st.hasMoreTokens()) {
             String linea =st.nextToken();                        
             if(lee){
-                //System.out.println("\\\\"+linea);
                 lista.add(new Aplicacion(linea));
             }
             if (linea.equals("Applications:")) {
@@ -186,17 +182,10 @@ public class LeerArchivos implements Runnable {
         Disco di = new model.Disco();
         ArrayList<Aplicacion> apli = new ArrayList<Aplicacion>();
 
-        //System.out.println("jasdf;oaidsjfadfh");
         while (m.find()) {
-            //System.out.print("Start index: " + m.start());
-            //System.out.print(" End index: " + m.end() + " ");
-            //System.out.println("----->");
             int i = 1;
             int porte = m.groupCount();
-            //System.out.println("Porte:"+porte);
             //mod.setId(1);
-            //System.out.print("Nombre: " + m.group(1));
-            //System.out.println("****"+m.toString());
             if(porte==1){                
                 apli = setAplicacion(contenidoarchivo);
                 

@@ -195,13 +195,13 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
     public void leer_datos_maquina() throws UnknownHostException, IOException {
         InetAddress localHost = InetAddress.getLocalHost();
         String maquina = localHost.getHostName().toString();
-        System.out.println(maquina);
+        
         String ip = localHost.getHostAddress();
-        System.out.println(ip);
+        
         String usr = System.getProperty("user.name");
-        System.out.println(usr);
+        
         String usr2 = System.getenv("USERNAME");
-        System.out.println(usr2);
+        
         if(LeerConfig.getMaquina() != null){
             maquina = LeerConfig.getMaquina();
         }
@@ -233,6 +233,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
         jTextField3 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -324,15 +325,16 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -346,7 +348,9 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
                 .addComponent(jToggleButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton2)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
 
         jTabbedPane5.addTab("Configuracion", jPanel2);
@@ -405,7 +409,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("------------------------74ahuml-->Accion ");
+        
         String maquina1 = this.jTextField1.getText();
         this.jTextField3.setText(maquina1);
         EscribirArchivos.WritePropertiesFileMain("app.maquina",maquina1);
@@ -426,54 +430,16 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void EnviarArchivosAPI(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarArchivosAPI
-        // TODO add your handling code here:
-        /*System.out.println("-------------------------->Accion ");
-        
-        this.jToggleButton1.setText("En Ejecucion");
-        this.jToggleButton1.setEnabled(false);
-        try {
-            Thread.sleep(600);
-            ConectarRestfull conn = new ConectarRestfull();
-            for (Aplicacion temp : this._aplicaciones) {
-                String result =conn.setAplicacion(this.tokenResponse, this._equipo, temp.getAplicacion());
-                
-                int intIndex = result.indexOf("\"error\":\"");
-                
-                if (intIndex > 0) {
-                    System.out.println("---------------->"+intIndex);
-                    Thread.sleep(60000);
-                    conn.setAplicacion(this.tokenResponse, this._equipo, temp.getAplicacion());
-                } 
-                
-                
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        this.jToggleButton1.setText("Actualizado");
-        this.jToggleButton1.setEnabled(true);
-        */
-        
-        this.jToggleButton1.setText("En Ejecucion");
-        this.jToggleButton1.setEnabled(false);
-        
-        ActualizarAplicaciones r = new ActualizarAplicaciones(this.tokenResponse, this._equipo, _aplicaciones);
-
+        // TODO add your handling code here:                               
+        ActualizarAplicaciones r = new ActualizarAplicaciones(this.tokenResponse, this._equipo, _aplicaciones,this.jProgressBar1,this.jButton1, this.jToggleButton1,this.jToggleButton2);
 
         Thread thread1 = new Thread(r, "Thread 1");
 
-        thread1.start();
-        this.jToggleButton1.setText("Actualizado!!!!!!!!");
-        this.jToggleButton1.setEnabled(true);
-        
-        
+        thread1.start();                        
     }//GEN-LAST:event_EnviarArchivosAPI
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        System.out.println("----*-*-*-*-**********===========>Cambiar nombre");
+        
     }                                  
 
 
@@ -486,6 +452,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -1,12 +1,20 @@
-/build
-/dist
-dist
+# NetBeans specific #
+nbproject/private/
+build/
+nbbuild/
 dist/
-dist/
-\dist
-!bower_components/**/dist/
-/target/
-/nbproject/
-gitignore.io help:
-  list    - lists the operating systems, programming languages and IDE input types
-  :types: - creates .gitignore files for types of operating systems, programming languages or IDEs
+dist/Actualizador.jar
+dist/launch.html
+dist/launch.jnlp
+
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear

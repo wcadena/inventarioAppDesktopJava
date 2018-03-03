@@ -42,7 +42,6 @@ public class LeerConfig {
         //retrieve the property we are intrested, the app.version
         versionString = mainProperties.getProperty("app.version");
 
-        //System.out.println("-----"+versionString);
         return versionString;
     }
     
@@ -80,7 +79,6 @@ public class LeerConfig {
         //retrieve the property we are intrested, the app.version
         versionString = mainProperties.getProperty(propiedad);
 
-        //System.out.println("-----"+versionString);
         return versionString;
     }
 

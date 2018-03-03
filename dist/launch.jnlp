@@ -42,11 +42,6 @@
 <jar href="lib/org.apache.commons.httpclient.jar"/>
 <jar href="lib/commons-codec-1.6.jar"/>
 <jar href="lib/commons-logging-1.1.1.jar"/>
-<jar href="lib/httpclient-4.2.5.jar"/>
-<jar href="lib/httpclient-cache-4.2.5.jar"/>
-<jar href="lib/httpcore-4.2.4.jar"/>
-<jar href="lib/httpmime-4.2.5.jar"/>
-<jar href="lib/json-simple-1.1.1.jar"/>
 <jar href="lib/org.json.jar"/>
 <jar href="lib/httpclient-4.4.jar"/>
 <jar href="lib/http-core-4.1.jar"/>
