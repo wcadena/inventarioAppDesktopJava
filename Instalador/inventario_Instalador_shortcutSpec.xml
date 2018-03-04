@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<shortcuts>
+    <skipIfNotSupported/>
+    <defaultCurrentUser/>
+    <programGroup defaultName="Ecuatask" location="applications"/>
+    <shortcut applications="no" desktop="yes"
+        iconFile="$INSTALL_PATH/icon.ico" iconIndex="0"
+        initialState="noShow" name="Inventario" programGroup="no"
+        startMenu="no" startup="yes"
+        target="$INSTALL_PATH/Inventarios.exe" workingDirectory="$INSTALL_PATH/"/>
+</shortcuts>

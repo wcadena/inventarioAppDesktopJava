@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<shortcuts>
+    <skipIfNotSupported/>
+    <defaultCurrentUser/>
+    <programGroup defaultName="Ecuatask" location="applications"/>
+    <shortcut KdeUsername="root" applications="no" desktop="yes"
+        encoding="UTF-8" iconFile="$INSTALL_PATH/icon.ico" iconIndex="0"
+        initialState="normal" name="Inventario" programGroup="no"
+        startMenu="no" startup="yes"
+        target="$INSTALL_PATH/Inventarios.exe" type="Application" workingDirectory="$INSTALL_PATH/"/>
+</shortcuts>

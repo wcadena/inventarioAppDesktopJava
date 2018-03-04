@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<installation version="1.0">
+    <info>
+        <appname>Inventario</appname>
+        <appversion>1.0.0</appversion>
+        <authors>
+            <author email="wcadena@outlook.com" name="Wagner Alexander Cadena"/>
+        </authors>
+        <url>http://ecuatask.com</url>
+        <uninstaller name="Uninstaller.jar" write="yes"/>
+        <requiresjdk>no</requiresjdk>
+        <writeinstallationinformation>yes</writeinstallationinformation>
+        <pack200/>
+        <run-privileged condition="izpack.windowsinstall.vista|izpack.windowsinstall.7"/>
+    </info>
+    <guiprefs height="480" resizable="yes" width="640">
+        <modifier key="useFlags" value="yes"/>
+        <modifier key="langDisplayType" value="default"/>
+    </guiprefs>
+    <locale>
+        <langpack iso3="spa"/>
+    </locale>
+    <resources>
+        <res id="shortcutSpec.xml" src="inventario_Instalador_shortcutSpec.xml"/>
+        <res id="Unix_shortcutSpec.xml" src="inventario_Instalador_Unix_shortcutSpec.xml"/>
+        <res id="Installer.image" src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\apple-touch-icon-180x180.png"/>
+    </resources>
+    <panels>
+        <panel classname="CheckedHelloPanel"/>
+        <panel classname="PacksPanel"/>
+        <panel classname="TargetPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="ShortcutPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+    <variables>
+        <variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+    </variables>
+    <packs>
+        <pack name="Core" preselected="yes" required="yes">
+            <description/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Actualizador.jar" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\apple-touch-icon-180x180.png" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\launch.html" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\launch.jnlp" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\README.TXT" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\run.bat" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\splashScreen.png" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\lib" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util\icon.ico" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Inventarios.exe" targetdir="$INSTALL_PATH/"/>
+        </pack>
+    </packs>
+    <native name="ShellLink.dll" type="izpack"/>
+    <native name="ShellLink_x64.dll" type="izpack"/>
+</installation>

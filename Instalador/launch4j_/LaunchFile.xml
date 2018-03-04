@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Actualizador.jar</jar>
+  <outfile>D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Inventarios.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine>-splash:util\splashScreen.png</cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util\icon.ico</icon>
+  <classPath>
+    <mainClass>main.java.actualizador.Actualizador</mainClass>
+    <cp>Actualizador.jar</cp>
+  </classPath>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.6.0_20</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+  <splash>
+    <file>D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util\splashScreen.bmp</file>
+    <waitForWindow>false</waitForWindow>
+    <timeout>1</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+</launch4jConfig>
