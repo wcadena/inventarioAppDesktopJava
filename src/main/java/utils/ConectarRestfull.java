@@ -227,7 +227,7 @@ public class ConectarRestfull {
         String URL = LeerConfig.getSite()+"api/check_list__opciones_check_lists";
         String result = this.post(tokenResponse, URL, "check_list_id="+equipo.data.check_list_id+
                 "&opciones_check_list_id="+LeerConfig.getOpcionesCheckListId()+
-                "&valor1="+aplicacion);        
+                "&valor1="+ (new String(aplicacion.getBytes("UTF-8"), "ISO-8859-1")) );        
         return result;
     }
 
@@ -314,7 +314,7 @@ public class ConectarRestfull {
         con.setRequestMethod("POST");
         //con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept", "application/json, text/javascript, */*; q=0.01");
-        //con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         //con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=windows-1252");
         con.setRequestProperty("Authorization", "Bearer " + this.tokenResponse.getAccessToken());
 

@@ -20,7 +20,7 @@ public class Actualizador {
         ActualizadorJNLP applet = new ActualizadorJNLP();
         applet.init();
 
-        JFrame frame = new JFrame("Mi PC ");
+        JFrame frame = new JFrame("Inventarios");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add( applet );
         frame.pack();
