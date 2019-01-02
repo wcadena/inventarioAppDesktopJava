@@ -204,7 +204,7 @@ public class ConectarRestfull {
         List<NameValuePair> nvPairList = new ArrayList<NameValuePair>();
         NameValuePair nv2 = new BasicNameValuePair("no_serie", equipo);
         nvPairList.add(nv2);
-        String URL = LeerConfig.getSite()+"api/equipo_no_serie";
+        String URL = LeerConfig.getSite()+"/api/equipo_no_serie";
         String result = this.get(tokenResponse, URL, "no_serie="+equipo);
         
         Gson gson = new GsonBuilder().create();
