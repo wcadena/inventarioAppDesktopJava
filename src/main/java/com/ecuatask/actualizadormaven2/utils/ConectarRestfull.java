@@ -36,6 +36,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.ecuatask.actualizadormaven2.model.TokenResponse;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -59,9 +60,9 @@ public class ConectarRestfull {
     private String password;
     private String scope;
     private String baseURL;
-    private com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse;
+    private TokenResponse tokenResponse;
 
-    public ConectarRestfull(String vendorName, String appName, String busNo, String username, String password, String scope, String baseURL, com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse) {
+    public ConectarRestfull(String vendorName, String appName, String busNo, String username, String password, String scope, String baseURL, TokenResponse tokenResponse) {
         this.vendorName = vendorName;
         this.appName = appName;
         this.busNo = busNo;
@@ -82,10 +83,10 @@ public class ConectarRestfull {
         scope = "";
         baseURL = LeerConfig.getSite();
 
-        tokenResponse = new com.ecuatask.actualizadormaven2.model.TokenResponse();
+        tokenResponse = new TokenResponse();
     }
 
-    public com.ecuatask.actualizadormaven2.model.TokenResponse getToken() throws JSONException, IOException, UnsupportedEncodingException, MalformedURLException, ProtocolException {
+    public TokenResponse getToken() throws JSONException, IOException, UnsupportedEncodingException, MalformedURLException, ProtocolException {
         // appName, vendorName, and busNo are values created in Central when 
         // registering an API application. They will need to be stored in your 
         // application
@@ -199,7 +200,7 @@ public class ConectarRestfull {
     }
     private boolean error;
 
-    public Object getEquipo_no_serie(com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse, String equipo) throws URISyntaxException, Exception {
+    public Object getEquipo_no_serie(TokenResponse tokenResponse, String equipo) throws URISyntaxException, Exception {
         List<NameValuePair> nvPairList = new ArrayList<NameValuePair>();
         NameValuePair nv2 = new BasicNameValuePair("no_serie", equipo);
         nvPairList.add(nv2);
@@ -216,7 +217,7 @@ public class ConectarRestfull {
           }                        
     }
     
-    public String setAplicacion(com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse,EquipoApi equipo, String aplicacion) throws URISyntaxException, Exception {
+    public String setAplicacion(TokenResponse tokenResponse,EquipoApi equipo, String aplicacion) throws URISyntaxException, Exception {
         List<NameValuePair> nvPairList = new ArrayList<NameValuePair>();
         NameValuePair nv2 = new BasicNameValuePair("check_list_id", equipo.data.check_list_id);
         NameValuePair nv3 = new BasicNameValuePair("opciones_check_list_id", LeerConfig.getOpcionesCheckListId());
@@ -231,7 +232,7 @@ public class ConectarRestfull {
         return result;
     }
 
-    public void setGetAction(com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse, String URL, List<NameValuePair> parametros) throws URISyntaxException {
+    public void setGetAction(TokenResponse tokenResponse, String URL, List<NameValuePair> parametros) throws URISyntaxException {
         // Test to see if you have obtained a token
         this.tokenResponse = tokenResponse;
         URIBuilder builder = new URIBuilder(URL);        
@@ -304,7 +305,7 @@ public class ConectarRestfull {
         }
     }
 
-    public String post(com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse,String url, String params) throws Exception {
+    public String post(TokenResponse tokenResponse,String url, String params) throws Exception {
         this.tokenResponse = tokenResponse;
         String result = null;
 
@@ -358,7 +359,7 @@ public class ConectarRestfull {
 
     }
 
-    public String get(com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse,String url, String params) throws Exception {
+    public String get(TokenResponse tokenResponse,String url, String params) throws Exception {
         this.tokenResponse = tokenResponse;
         String result = null;
 
