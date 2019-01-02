@@ -29,4 +29,48 @@
     </properties>
     <name>GestorInventarios_java_desktop</name>
     <description>Aplicacion que debe usarse para llamra servicio tecnico y debe actualizar el checklist de la maquina en el sistema central es un JNLP</description>
+    <build>
+       <!-- Hacemos que en la fase de package nos traiga todas las
+            dependencias -->
+    <plugins>
+       <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <executions>
+             <execution>
+                <id>copy</id>
+                <phase>package</phase>
+                <goals>
+                   <goal>copy-dependencies</goal>
+                </goals>
+             </execution>
+          </executions>
+       </plugin>
+       <!-- Plugin de izpack para generar el instalador, configurado
+            para que lo genere en la fase de package -->
+       <plugin>
+          <groupId>org.codehaus.izpack</groupId>
+          <artifactId>izpack-maven-plugin</artifactId>
+          <executions>
+            <execution>
+               <phase>package</phase>
+               <goals>
+                  <goal>izpack</goal>
+               </goals>
+               <configuration>
+                  <izpackBasedir>target</izpackBasedir>
+                  <installerFile>target/Setup-maven-izpack-1.0-SNAPSHOT.jar</installerFile>
+               </configuration>
+            </execution>
+          </executions>
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.izpack</groupId>
+              <artifactId>izpack-standalone-compiler</artifactId>
+              <version>4.2.1</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+    </plugins>
+  </build>
 </project>
