@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
-<installation version="1.0">
+<installation version="5.0">
     <info>
         <appname>Inventario</appname>
-        <appversion>1.0.0</appversion>
+        <appversion>1.0.1</appversion>
         <authors>
             <author email="wcadena@outlook.com" name="Wagner Alexander Cadena"/>
         </authors>
@@ -35,6 +35,7 @@
     </panels>
     <variables>
         <variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+        <variable name="RESOURCEROOT" value="src/main/izpack"/>
     </variables>
     <packs>
         <pack name="Core" preselected="yes" required="yes">
