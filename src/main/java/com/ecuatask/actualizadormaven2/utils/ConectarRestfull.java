@@ -19,7 +19,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-//import static javafx.scene.input.KeyCode.T;
+
 import javax.xml.bind.DatatypeConverter;
 import com.ecuatask.actualizadormaven2.model.api.EquipoApi;
 import org.apache.http.NameValuePair;
@@ -54,7 +54,7 @@ public class ConectarRestfull {
     
 
     public ConectarRestfull() throws IOException {
-        ///https://developer.niceincontact.com/API/CompleteRequestExampleCode
+        // ejemplo /https://developer.niceincontact.com/API/CompleteRequestExampleCode
         vendorName = "ecuatask"; //Provide the vendor name
         appName = "ecuataskBooble"; //Provide the application name
         busNo = "Desarrollo"; //Provide the business unit
@@ -98,9 +98,9 @@ public class ConectarRestfull {
                 + username + "\",\"password\":\"" + password
                 + "\",\"scope\":\"" + scope + "\",\"client_secret\":\"" + LeerConfig.getClienteSecret() + "\",\"client_id\":\"" + LeerConfig.getClienteId() + "\"}";
 
-        //+ "\",\"scope\":\"" + scope + "\"}";
+       
         URL tokenURL = new URL(endpoint);
-        // URL url = new URL(null, endpoint, new sun.net.www.protocol.https.Handler());
+       
 
         // Creating Request
         // Setting necessary headers
@@ -110,10 +110,10 @@ public class ConectarRestfull {
 
         connection.setRequestMethod("POST");
 
-        //connection.setRequestProperty("Accept","application/json, text/javascript, */*; q=0.01");
+       
         connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-        //connection.setRequestProperty("Authorization", "basic "+ encodedAuthToken);
-        //connection.setRequestProperty("Content-Length", Integer.toString(postData.toString().length()));
+       
+       
         connection.setDoOutput(true);
         OutputStream os = connection.getOutputStream();
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(os, "UTF-8");
@@ -125,24 +125,9 @@ public class ConectarRestfull {
         System.out.println("Response Code : "
                 + connection.getResponseCode());
         System.out.println(connection.getResponseMessage());
-        ////////////////
-        /*InputStream indd = connection.getErrorStream();
-
-            if (indd == null) {
-                indd = connection.getInputStream();
-            }
-            ByteArrayOutputStream resultdd = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = indd.read(buffer)) != -1) {
-                resultdd.write(buffer, 0, length);
-            }
-            System.out.println("--*-*--->" + resultdd.toString());;//para ver el error
-         */
-        ////////////////
-
+       
         InputStreamReader isr = new InputStreamReader(connection.getInputStream());
-        //InputStreamReader isr= new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8"));
+       
         BufferedReader in = new BufferedReader(isr);
 
         String inputLine;
@@ -166,15 +151,10 @@ public class ConectarRestfull {
         JSONObject jsonObject = new JSONObject(response.toString());
 
         this.tokenResponse.setAccessToken(jsonObject.getString("access_token"));
-        //this.tokenResponse.resourceServerBaseUri = jsonObject.getString("resource_server_base_uri");
+       
         this.tokenResponse.setToken_type(jsonObject.getString("token_type"));
         this.tokenResponse.setExpiresIn(jsonObject.getInt("expires_in"));
         this.tokenResponse.setRefreshToken(jsonObject.getString("refresh_token"));
-        //this.tokenResponse.scope = jsonObject.getString("scope");
-        //this.tokenResponse.refreshTokenServerUri = jsonObject.getString("refresh_token_server_uri");
-        //this.tokenResponse.teamId = jsonObject.getInt("team_id");
-        //this.tokenResponse.agentId = jsonObject.getInt("agent_id");
-
         connection.disconnect();
         return this.tokenResponse;
     }
@@ -219,7 +199,7 @@ public class ConectarRestfull {
         if (!tokenResponse.getAccessToken().isEmpty()) {
             String apiURL = URL;            
             // baseURL was returned with your successful token request
-            //String endpoint = this.tokenResponse.resourceServerBaseUri + apiURL;
+       
             String endpoint = apiURL;
             try {
                 URL agentResourceURL = new URL(endpoint);
@@ -238,7 +218,7 @@ public class ConectarRestfull {
                 System.out.println("Response Code : " + connection.getResponseCode());
                 System.out.println(connection.getResponseMessage());
 
-                ////////////////
+       
                 InputStream indd = connection.getErrorStream();
 
                 if (indd == null) {
@@ -252,7 +232,7 @@ public class ConectarRestfull {
                 }
                 
 
-                ////////////////
+       
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String inputLine;
                 StringBuffer response = new StringBuffer();
@@ -293,10 +273,10 @@ public class ConectarRestfull {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("POST");
-        //con.setRequestProperty("User-Agent", USER_AGENT);
+       
         con.setRequestProperty("Accept", "application/json, text/javascript, */*; q=0.01");
         con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        //con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=windows-1252");
+       
         con.setRequestProperty("Authorization", "Bearer " + this.tokenResponse.getAccessToken());
 
 
@@ -321,7 +301,7 @@ public class ConectarRestfull {
             in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             Logger.getLogger(ConectarRestfull.class.getName()).log(Level.SEVERE, null, "Error en post: ["+error+"]");
         }finally{
-            //System.err.println("->>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+error);
+       
         }
         
         
@@ -348,14 +328,10 @@ public class ConectarRestfull {
 
         con.setRequestMethod("GET");
         con.setRequestProperty("Accept", "application/json, text/javascript, */*; q=0.01");
-        //con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        //con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=windows-1252");
         
         con.setRequestProperty("Authorization", "Bearer " + this.tokenResponse.getAccessToken());
 
         
-
-        //con.setRequestProperty("User-Agent", USER_AGENT);
 
         int responseCode = con.getResponseCode();
         System.out.println("'GET' request to URL : " + url);

@@ -167,13 +167,7 @@ public class LeerArchivos implements Runnable {
      * @param Traductor
      */
     public void parseDoc(String contenidoarchivo, String Traductor) {
-        //utils.LectorArchivo l=new utils.LectorArchivo(contenidoarchivo.getArchivo());
-        //String input= l.getTextoTotal();
         String input = contenidoarchivo;
-        //= "User clientId=23421. Some more text clientId=33432. This clientNum=100";
-
-        //Pattern p = Pattern.compile("RFF[(]AVF:(.*?)-[.*?]DOC[(]P:110:111[(](.*?)-");
-        //Pattern p = Pattern.compile("RFF[(]AVF:(.*?)-\n.*?DOC[(]P:110:111[(](.*?)-\n(.*?)-");//x3
         Pattern p = Pattern.compile(Traductor);
         Matcher m = p.matcher(input);
 
@@ -185,7 +179,7 @@ public class LeerArchivos implements Runnable {
         while (m.find()) {
             int i = 1;
             int porte = m.groupCount();
-            //mod.setId(1);
+        
             if(porte==1){                
                 apli = setAplicacion(contenidoarchivo);
                 
@@ -238,9 +232,7 @@ public class LeerArchivos implements Runnable {
     
 
     public static void main(String[] args) throws InterruptedException {
-        //new LeerArchivos().
         LeerArchivos.LeerArchivos(args);
-        //ParseDocument.main_test(args);
         
     }
     public static void LeerArchivos(String[] args) throws InterruptedException {                
@@ -266,42 +258,6 @@ public class LeerArchivos implements Runnable {
         thread1.run();
         
     }
-/*
-    
-
-    public void traductorTest(String archivo, String traductor) {
-        utils.LectorArchivo l = new utils.LectorArchivo(archivo);
-        String input = l.getTextoTotal();
-        //= "User clientId=23421. Some more text clientId=33432. This clientNum=100";
-
-        //Pattern p = Pattern.compile("RFF[(]AVF:(.*?)-[.*?]DOC[(]P:110:111[(](.*?)-");
-        //Pattern p = Pattern.compile("RFF[(]AVF:(.*?)-\n.*?DOC[(]P:110:111[(](.*?)-\n(.*?)-");//x3
-        Pattern p = Pattern.compile(traductor);
-        Matcher m = p.matcher(input);
-
-        StringBuffer result = new StringBuffer();
-        while (m.find()) {
-            System.out.print("Nombre: " + m.group(1));
-            System.out.print("  \tSexo:" + m.group(2));
-            System.out.print("  \tDTM:" + m.group(3).trim());
-            System.out.print("  \tDTM:" + m.group(4).trim());
-            System.out.print("  \tLOC174:" + m.group(5).trim() + "");
-            System.out.print("  \tLOC178:" + m.group(6).trim() + "");
-            System.out.print("  \tLOC179:" + m.group(7).trim() + "");
-            System.out.print("  \tNat:" + m.group(8).trim() + "");
-            System.out.print("  \tRFF" + m.group(9).trim() + "");
-            System.out.print("  \tDocu:" + m.group(10).trim() + "");
-            System.out.print("  \tDTM" + m.group(11).trim() + "");
-            System.out.print("  \tLOC91" + m.group(12).trim() + "");/** /
-
-            System.out.println("");
-            //m.appendReplacement(result, m.group(1) + "***masked***");
-        }
-        //m.appendTail(result);
-        System.out.println(result);
-    }
-*/
-
     @Override
     public void run() {
        LeerArchivos a =new LeerArchivos();

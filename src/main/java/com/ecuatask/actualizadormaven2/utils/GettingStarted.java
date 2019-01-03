@@ -144,11 +144,7 @@ public class GettingStarted {
             this.tokenResponse.tokenType = jsonObject.getString("token_type");
             this.tokenResponse.expiresIn = jsonObject.getInt("expires_in");
             this.tokenResponse.refreshToken = jsonObject.getString("refresh_token");
-            //this.tokenResponse.scope = jsonObject.getString("scope");
-            //this.tokenResponse.refreshTokenServerUri = jsonObject.getString("refresh_token_server_uri");
-            //this.tokenResponse.teamId = jsonObject.getInt("team_id");
-            //this.tokenResponse.agentId = jsonObject.getInt("agent_id");
-
+           
             connection.disconnect();
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
@@ -193,21 +189,6 @@ public class GettingStarted {
                 System.out.println("Response Code : " + connection.getResponseCode());
                 System.out.println(connection.getResponseMessage());
                 
-                /* ////////////////
-                InputStream indd = connection.getErrorStream();
-
-                if (indd == null) {
-                    indd = connection.getInputStream();
-                }
-                ByteArrayOutputStream resultdd = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = indd.read(buffer)) != -1) {
-                    resultdd.write(buffer, 0, length);
-                }
-                System.out.println("--*-*--->" + resultdd.toString());;//para ver el error
-            
-                ////////////////*/
                 
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String inputLine;

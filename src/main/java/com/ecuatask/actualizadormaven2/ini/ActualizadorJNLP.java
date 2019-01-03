@@ -2,7 +2,6 @@ package com.ecuatask.actualizadormaven2.ini;
 
 
 
-//import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.ecuatask.actualizadormaven2.model.Aplicacion;
 import com.ecuatask.actualizadormaven2.model.Disco;
@@ -56,10 +55,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
                 while(nombreIterator.hasNext()){
                         Object elemento = nombreIterator.next();
                         _lee= _lee+("+->"+elemento)+"\n";
-                        
-                        /*if ( elemento instanceof Aplicacion ){                            
-                        }*/
-                        
+                                                                       
                 }
         return _lee;
     }
