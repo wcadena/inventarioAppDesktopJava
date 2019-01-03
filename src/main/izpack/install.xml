@@ -66,6 +66,7 @@
 
     <variables>
         <variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+        <variable name="RESOURCEROOT" value="src/main/izpack"/>
     </variables>
     <!--
         The packs section.

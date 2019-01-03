@@ -63,6 +63,7 @@
     <name>GestorInventarios_java_desktop</name>
     <description>Aplicacion que debe usarse para llamra servicio tecnico y debe actualizar el checklist de la maquina en el sistema central es un JNLP</description>
     <build>
+        <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
