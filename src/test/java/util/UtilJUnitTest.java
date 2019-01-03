@@ -27,4 +27,8 @@ public class UtilJUnitTest extends TestCase {
         ConectarRestfull c = new ConectarRestfull();
         System.out.println("---->"+c.getToken());;
     }
+    public void testPruebaruntime() throws InterruptedException{
+        LeerArchivos p = new LeerArchivos();      
+        p.cargarTraductores();
+    }
 }

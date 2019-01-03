@@ -57,13 +57,7 @@ public class LeerArchivos implements Runnable {
     
     
 
-    public LeerArchivos(ActualizadorJNLP aThis, JTextArea jTextArea1, JTextArea jTextArea2, JTextArea jTextArea3) throws InterruptedException {
-        this.aThis = aThis;
-        this.jTextArea1 = jTextArea1;
-        this.jTextArea2 = jTextArea2;
-        this.jTextArea3 = jTextArea3;
-        this.arrancaConLectura();
-    }
+   
     
     
 
@@ -146,13 +140,14 @@ public class LeerArchivos implements Runnable {
     public Disco setDisco(String dato) {
         Disco di = new Disco();
         StringTokenizer st = new StringTokenizer(dato, "  ");
-        di.setVolume(st.nextToken());
-        di.setType(st.nextToken());
-        di.setFormat(st.nextToken());
-        di.setLabel(st.nextToken());
-        di.setSize(st.nextToken());
-        di.setFree(st.nextToken());
-        di.setFree_porsiento(st.nextToken());
+        
+        di.setVolume((st.hasMoreTokens())?st.nextToken():"");
+        di.setType((st.hasMoreTokens())?st.nextToken():"");
+        di.setFormat((st.hasMoreTokens())?st.nextToken():"");
+        di.setLabel((st.hasMoreTokens())?st.nextToken():"");
+        di.setSize((st.hasMoreTokens())?st.nextToken():"");
+        di.setFree((st.hasMoreTokens())?st.nextToken():"");
+        di.setFree_porsiento((st.hasMoreTokens())?st.nextToken():"");
         return di;
     }
     /**
@@ -239,16 +234,6 @@ public class LeerArchivos implements Runnable {
         
         Thread thread1 = new Thread(pr, "Thread 1");
         thread1.join();
-        thread1.run();
-        
-    }
-    public void arrancaConLectura() throws InterruptedException{
-        LeerArchivos p = new LeerArchivos();      
-        this.jTextArea1.setText("AAAAAAAAAAAAAAAAAAA");
-        PruebaRuntime pr = new PruebaRuntime(this,this.aThis,this.jTextArea1 ,this.jTextArea2, this.jTextArea3);
-        
-        Thread thread1 = new Thread(pr, "Thread 1");
-        
         thread1.run();
         
     }
