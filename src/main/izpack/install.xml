@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<izpack:installation version="5.0"
+                     xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+    <!--
+        The info section.
+        The meaning of the tags should be natural ...
+    -->
+    <info>
+        <appname>Ecuatask Gestor Inventarios</appname>
+        <appsubpath>ecuatask</appsubpath>
+        <appversion>1.0.1</appversion>
+        <authors>
+            <author name="Wagner Cadena" email="wcadena@outlook.com"/>
+        </authors>
+        <url>https://ecuatask.com/</url>
+        <run-privileged/>
+        <readinstallationinformation>yes</readinstallationinformation>
+        <writeinstallationinformation>true</writeinstallationinformation>
+        <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>
+    </info>
+
+    <!-- 
+        The gui preferences indication.
+        Sets the installer window to 640x480. It will not be able to change the size.
+    -->
+    <guiprefs height="480" resizable="yes" width="640">
+        <modifier key="useFlags" value="yes"/>
+        <modifier key="langDisplayType" value="default"/>
+    </guiprefs>
+
+    <!-- 
+        The locale section.
+        Asks here to include the English and French langpacks.
+    -->
+    <locale>
+        <langpack iso3="spa"/>
+    </locale>
+
+    <!-- 
+        The resources section.
+        The ids must be these ones if you want to use the LicencePanel and/or the InfoPanel.
+    -->
+    <resources>
+        <res id="LicencePanel.licence" src="Licence.txt"/>
+        <res id="InfoPanel.info" src="Readme.txt"/>
+        <!-- dato-->
+        <res id="shortcutSpec.xml" src="inventario_Instalador_shortcutSpec.xml"/>
+        <res id="Unix_shortcutSpec.xml" src="inventario_Instalador_Unix_shortcutSpec.xml"/>
+        <res id="Installer.image" src="D:\Users\wcade\Documents\NetBeansProjects\ActualizadorMaven2\util\apple-touch-icon-180x180.png"/>
+    </resources>
+   
+    <jar src="dependency/plexus-utils.jar"/>
+    
+
+    <!-- 
+        The panels section.
+        We indicate here which panels we want to use. The order will be respected.
+    -->
+    <panels>
+        <panel classname="CheckedHelloPanel"/>
+        <panel classname="TargetPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="ShortcutPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+
+    <variables>
+       
+        <variable name="RESOURCEROOT" value="src/main/izpack"/>
+    </variables>
+    <!--
+        The packs section.
+        We specify here our packs.
+    -->
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+            <file src="Readme.txt" targetdir="$INSTALL_PATH"/>
+            <file src="Licence.txt" targetdir="$INSTALL_PATH"/>
+            <file src="script.bat" targetdir="$INSTALL_PATH"/>
+            <parsable targetfile="$INSTALL_PATH/script.bat"/>
+            <!-- The file will be parsed -->
+            <!-- paquetes 
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Actualizador.jar" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\apple-touch-icon-180x180.png" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\launch.html" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\launch.jnlp" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\README.TXT" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\run.bat" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\splashScreen.png" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\lib" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util\icon.ico" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Inventarios.exe" targetdir="$INSTALL_PATH/"/>
+            -->
+        </pack>
+        <pack name="Docs" required="no">
+            <description>The documentation</description>
+            <file src="doc" targetdir="$INSTALL_PATH"/>
+            <!-- Reccursive adding -->
+        </pack>
+        
+    </packs>
+    <!--
+    <native name="ShellLink.dll" type="izpack"/>
+    <native name="ShellLink_x64.dll" type="izpack"/>
+        -->
+</izpack:installation>
