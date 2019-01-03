@@ -126,7 +126,7 @@ public class LeerArchivos implements Runnable {
     
     public ArrayList<Aplicacion> setAplicacion(String dato) {
         ArrayList<Aplicacion> lista = new ArrayList<Aplicacion>();
-        //model.Aplicacion a =new model.Aplicacion();
+        
         StringTokenizer st = new StringTokenizer(dato,"\n");
         boolean lee=false;
         while (st.hasMoreTokens()) {
@@ -139,10 +139,7 @@ public class LeerArchivos implements Runnable {
             }
         }
         
-       /* StringTokenizer st2 = new StringTokenizer(st.nextToken());
-        while (st2.hasMoreTokens()) {
-            System.out.println("//"+st2.nextToken());
-        }*/
+       
         return lista;
     }
 

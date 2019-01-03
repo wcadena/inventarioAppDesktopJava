@@ -82,12 +82,12 @@ public class GettingStarted {
                     + username + "\",\"password\":\"" + password
                     + "\",\"scope\":\"" + scope + "\",\"client_secret\":\"2KgXxmMpWaAqTr9VD5HcGDEd607E8WT3qHrFmxoV\",\"client_id\":\"5\"}";
             
-                    //+ "\",\"scope\":\"" + scope + "\"}";
+                    
             
                     
-            //http://inventario.ecuatask.localhost/oauth/token?grant_type=password&client_id=11&client_secret=AD3exMOK8AQsZmfjCx7Fc3LUNhGMhcSfhW2uPbCT&username=wcadena@outlook.com&password=wcadena
+            // la consulta se raliza a http://inventario.ecuatask.localhost/oauth/token?grant_type=password&client_id=11&client_secret=AD3exMOK8AQsZmfjCx7Fc3LUNhGMhcSfhW2uPbCT&username=wcadena@outlook.com&password=wcadena
             URL tokenURL = new URL(endpoint);
-           // URL url = new URL(null, endpoint, new sun.net.www.protocol.https.Handler());
+           
 
             // Creating Request
             // Setting necessary headers
@@ -97,10 +97,9 @@ public class GettingStarted {
 
             connection.setRequestMethod("POST");
 
-            //connection.setRequestProperty("Accept","application/json, text/javascript, */*; q=0.01");
+           
             connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            //connection.setRequestProperty("Authorization", "basic "+ encodedAuthToken);
-            //connection.setRequestProperty("Content-Length", Integer.toString(postData.toString().length()));
+           
             connection.setDoOutput(true);
             OutputStream os = connection.getOutputStream();
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(os,"UTF-8");
@@ -115,7 +114,7 @@ public class GettingStarted {
             
            
             InputStreamReader isr= new InputStreamReader(connection.getInputStream());
-            //InputStreamReader isr= new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8"));
+           
             BufferedReader in = new BufferedReader(isr);
             
             String inputLine;
@@ -140,7 +139,7 @@ public class GettingStarted {
             JSONObject jsonObject = new JSONObject(response.toString());
 
             this.tokenResponse.accessToken = jsonObject.getString("access_token");
-            //this.tokenResponse.resourceServerBaseUri = jsonObject.getString("resource_server_base_uri");
+            
             this.tokenResponse.tokenType = jsonObject.getString("token_type");
             this.tokenResponse.expiresIn = jsonObject.getInt("expires_in");
             this.tokenResponse.refreshToken = jsonObject.getString("refresh_token");
