@@ -10,12 +10,17 @@
         The meaning of the tags should be natural ...
     -->
     <info>
-        <appname>@{project.name}</appname>
-        <appversion>1.4 beta 666</appversion>
+        <appname>Ecuatask Gestor Inventarios</appname>
+        <appsubpath>ecuatask</appsubpath>
+        <appversion>1.0.1</appversion>
         <authors>
-            <author name="${user.name}" email="wcadena@outlook.com"/>
+            <author name="Wagner Cadena" email="wcadena@outlook.com"/>
         </authors>
         <url>https://ecuatask.com/</url>
+        <run-privileged/>
+        <readinstallationinformation>yes</readinstallationinformation>
+        <writeinstallationinformation>true</writeinstallationinformation>
+        <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>
     </info>
 
     <!-- 
@@ -57,7 +62,6 @@
     -->
     <panels>
         <panel classname="CheckedHelloPanel"/>
-        <panel classname="PacksPanel"/>
         <panel classname="TargetPanel"/>
         <panel classname="InstallPanel"/>
         <panel classname="ShortcutPanel"/>
@@ -65,7 +69,7 @@
     </panels>
 
     <variables>
-        <variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+       
         <variable name="RESOURCEROOT" value="src/main/izpack"/>
     </variables>
     <!--
