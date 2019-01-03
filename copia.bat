@@ -1,1 +1,0 @@
-xcopy "C:\Users\wcadena\Documents\Actualizador\dist" "C:\xampp\htdocs\inventario3\html\desktop_app" /s/c/y
