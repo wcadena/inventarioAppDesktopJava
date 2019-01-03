@@ -42,14 +42,14 @@
     </resources>
 
     <jar src="dependency/plexus-utils.jar"/>
-    <jar src="dependency/izpack-panel-example.jar"/>
+    
 
     <!-- 
         The panels section.
         We indicate here which panels we want to use. The order will be respected.
     -->
     <panels>
-        <panel classname="com.company.izpack.panels.MyHelloPanel"/>
+        
         <panel classname="InfoPanel"/>
         <panel classname="LicencePanel"/>
         <panel classname="TargetPanel"/>
@@ -76,10 +76,7 @@
             <file src="doc" targetdir="$INSTALL_PATH"/>
             <!-- Reccursive adding -->
         </pack>
-        <pack name="Sources" required="no">
-            <description>The sources</description>
-            <file src="src" targetdir="$INSTALL_PATH"/>
-        </pack>
+        
     </packs>
 
 </izpack:installation>

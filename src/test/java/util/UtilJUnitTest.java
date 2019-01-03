@@ -9,6 +9,7 @@ import com.ecuatask.actualizadormaven2.utils.ConectarRestfull;
 import com.ecuatask.actualizadormaven2.utils.LeerArchivos;
 import com.ecuatask.actualizadormaven2.utils.PruebaRuntime;
 
+
 import java.io.IOException;
 import junit.framework.TestCase;
 
@@ -30,5 +31,6 @@ public class UtilJUnitTest extends TestCase {
     public void testPruebaruntime() throws InterruptedException{
         LeerArchivos p = new LeerArchivos();      
         p.cargarTraductores();
+       // MyHelloPanel h ;
     }
 }
