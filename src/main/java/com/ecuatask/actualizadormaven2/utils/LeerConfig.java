@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.ecuatask.actualizadormaven2.utils.EscribirArchivos;
 
 /**
  *
@@ -20,7 +19,7 @@ import com.ecuatask.actualizadormaven2.utils.EscribirArchivos;
 public class LeerConfig {
     public static String getAppVersion() throws IOException {
 
-        String versionString = null;
+       
 
         //to load application's properties, we use this class
         Properties mainProperties = new Properties();
@@ -40,7 +39,7 @@ public class LeerConfig {
         file.close();
 
         //retrieve the property we are intrested, the app.version
-        versionString = mainProperties.getProperty("app.version");
+        String versionString = mainProperties.getProperty("app.version");
 
         return versionString;
     }
@@ -57,7 +56,7 @@ public class LeerConfig {
     
     private static String getData(String raiz,String archivo, String propiedad) throws IOException {
 
-        String versionString = null;
+
 
         //to load application's properties, we use this class
         Properties mainProperties = new Properties();
@@ -77,7 +76,7 @@ public class LeerConfig {
         file.close();
 
         //retrieve the property we are intrested, the app.version
-        versionString = mainProperties.getProperty(propiedad);
+        String versionString = mainProperties.getProperty(propiedad);
 
         return versionString;
     }
@@ -109,10 +108,8 @@ public class LeerConfig {
     public static boolean isInteger(String s) {
     try { 
         Integer.parseInt(s); 
-    } catch(NumberFormatException e) { 
+    } catch(NumberFormatException | NullPointerException e) { 
         return false; 
-    } catch(NullPointerException e) {
-        return false;
     }
     // only got here if we didn't return false
     return true;
