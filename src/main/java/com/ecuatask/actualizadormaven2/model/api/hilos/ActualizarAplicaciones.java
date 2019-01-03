@@ -29,14 +29,14 @@ public class ActualizarAplicaciones implements Runnable {
         enviarAplicacion();
     }
 
-    private com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse;
-    private EquipoApi _equipo;
-    private ArrayList<Aplicacion> _aplicaciones;
+    private final com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse;
+    private final EquipoApi _equipo;
+    private final ArrayList<Aplicacion> _aplicaciones;
     
-    private JProgressBar jProgressBar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private final JProgressBar jProgressBar;
+    private final javax.swing.JButton jButton1;
+    private final javax.swing.JToggleButton jToggleButton1;
+    private final javax.swing.JToggleButton jToggleButton2;
 
     public ActualizarAplicaciones(TokenResponse tokenResponse, EquipoApi _equipo, ArrayList<Aplicacion> _aplicaciones, JProgressBar jProgressBar, JButton jButton1, JToggleButton jToggleButton1, JToggleButton jToggleButton2) {
         this.tokenResponse = tokenResponse;

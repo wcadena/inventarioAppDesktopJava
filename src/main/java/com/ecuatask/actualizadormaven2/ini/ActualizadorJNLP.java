@@ -16,6 +16,7 @@ import com.ecuatask.actualizadormaven2.utils.LeerArchivos;
 import com.ecuatask.actualizadormaven2.utils.LeerConfig;
 import com.ecuatask.actualizadormaven2.utils.PruebaRuntime;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -71,29 +72,33 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
         String dato = pru.getContenido();
         int j=0;
         List<String> tar = arc.traductores;
-        for (String dat : tar) {
-            
+        tar.stream().map((dat) -> {
             arc.parseDoc(dato, dat);
+            return dat;
+        }).map((_item) -> {
             this._aplicaciones=arc.getAplicaciones();
+            return _item;
+        }).map((_item) -> {
             this._discos=arc.getDiscos();
+            return _item;
+        }).map((_item) -> {
             this._maquinas=arc.getMaquinas();
+            return _item;
+        }).map((_item) -> {
             this.jTextArea1.setText(this.leerArrayList(this._aplicaciones));
+            return _item;
+        }).map((_item) -> {
             this.jTextArea2.setText(this.leerArrayList(this._discos));
+            return _item;
+        }).forEachOrdered((_item) -> {
             this.jTextArea3.setText(this.leerArrayList(this._maquinas));
-            
-        }
+        });
     }
     
     private String Version,User,Password,Site;
     
     private void getPlainTextResponse() {
-        try {
-
-            
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
     }//end of method
     
     /**
@@ -113,26 +118,17 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ActualizadorJNLP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ActualizadorJNLP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ActualizadorJNLP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ActualizadorJNLP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the applet */
         try {
-            java.awt.EventQueue.invokeAndWait(new Runnable() {
-                public void run() {
-                    initComponents();
-                }
-            });
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            java.awt.EventQueue.invokeAndWait(this::initComponents);
+        } catch (InterruptedException | InvocationTargetException ex) {
         }        
         this.iniciarConeccionApi();
     }
@@ -144,7 +140,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
                 //runner();
             }            
             
-        } catch (Exception ex) {//UnknownHostException
+        } catch (IOException ex) {//UnknownHostException
             Logger.getLogger(ActualizadorJNLP.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -193,7 +189,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
     
     public void leer_datos_maquina() throws UnknownHostException, IOException {
         InetAddress localHost = InetAddress.getLocalHost();
-        String maquina = localHost.getHostName().toString();
+        String maquina = localHost.getHostName();
         
         String ip = localHost.getHostAddress();
         

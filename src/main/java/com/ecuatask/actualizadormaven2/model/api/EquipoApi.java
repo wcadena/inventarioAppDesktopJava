@@ -5,8 +5,6 @@
  */
 package com.ecuatask.actualizadormaven2.model.api;
 
-import com.ecuatask.actualizadormaven2.model.api.Equipo;
-
 /**
  *
  * @author Anibal

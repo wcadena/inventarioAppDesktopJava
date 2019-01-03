@@ -42,13 +42,13 @@ import com.ecuatask.actualizadormaven2.model.api.ErrorApi;
  */
 public class ConectarRestfull {
 
-    private String vendorName;
-    private String appName;
-    private String busNo;
-    private String username;
-    private String password;
-    private String scope;
-    private String baseURL;
+    private final String vendorName;
+    private final String appName;
+    private final String busNo;
+    private final String username;
+    private final String password;
+    private final String scope;
+    private final String baseURL;
     private TokenResponse tokenResponse;
 
     
@@ -116,10 +116,10 @@ public class ConectarRestfull {
        
         connection.setDoOutput(true);
         OutputStream os = connection.getOutputStream();
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(os, "UTF-8");
-        outputStreamWriter.write(postData.toString());
-        outputStreamWriter.flush();
-        outputStreamWriter.close();
+        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(os, "UTF-8")) {
+            outputStreamWriter.write(postData);
+            outputStreamWriter.flush();
+        }
 
         System.out.println("POST Request to get Token");
         System.out.println("Response Code : "
@@ -128,15 +128,15 @@ public class ConectarRestfull {
        
         InputStreamReader isr = new InputStreamReader(connection.getInputStream());
        
-        BufferedReader in = new BufferedReader(isr);
-
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
-            
-            response.append(inputLine);
+        StringBuffer response;
+        try (BufferedReader in = new BufferedReader(isr)) {
+            String inputLine;
+            response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                
+                response.append(inputLine);
+            }
         }
-        in.close();
 
         // print result
         if (response.toString().isEmpty()) {
@@ -161,7 +161,7 @@ public class ConectarRestfull {
     private boolean error;
 
     public Object getEquipo_no_serie(TokenResponse tokenResponse, String equipo) throws URISyntaxException, Exception {
-        List<NameValuePair> nvPairList = new ArrayList<NameValuePair>();
+        List<NameValuePair> nvPairList = new ArrayList<>();
         NameValuePair nv2 = new BasicNameValuePair("no_serie", equipo);
         nvPairList.add(nv2);
         String URL = LeerConfig.getSite()+"/api/equipo_no_serie";
@@ -178,7 +178,7 @@ public class ConectarRestfull {
     }
     
     public String setAplicacion(TokenResponse tokenResponse,EquipoApi equipo, String aplicacion) throws URISyntaxException, Exception {
-        List<NameValuePair> nvPairList = new ArrayList<NameValuePair>();
+        List<NameValuePair> nvPairList = new ArrayList<>();
         NameValuePair nv2 = new BasicNameValuePair("check_list_id", equipo.data.check_list_id);
         NameValuePair nv3 = new BasicNameValuePair("opciones_check_list_id", LeerConfig.getOpcionesCheckListId());
         NameValuePair nv4 = new BasicNameValuePair("valor1", aplicacion);
@@ -233,13 +233,14 @@ public class ConectarRestfull {
                 
 
        
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
+                StringBuffer response;
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String inputLine;
+                    response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
                 }
-                in.close();
 
                 if (response.toString().isEmpty()) {
                     System.out.println("Response is empty");
@@ -249,16 +250,15 @@ public class ConectarRestfull {
                 connection.disconnect();
             } catch (UnsupportedEncodingException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
+
+            } catch (MalformedURLException | ProtocolException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (ProtocolException e) {
+
+            }
+            // TODO Auto-generated catch block
+             catch (IOException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+
             }
         } else {
             System.out.println("obtain a token");
@@ -281,10 +281,10 @@ public class ConectarRestfull {
 
 
         con.setDoOutput(true);
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(params);
-        wr.flush();
-        wr.close();
+        try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
+            wr.writeBytes(params);
+            wr.flush();
+        }
 
         int responseCode = con.getResponseCode();
         System.out.println("'POST' request to URL : " + url);

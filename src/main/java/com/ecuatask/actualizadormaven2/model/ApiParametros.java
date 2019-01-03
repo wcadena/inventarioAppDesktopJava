@@ -64,10 +64,7 @@ public class ApiParametros {
         if (!Objects.equals(this._key, other._key)) {
             return false;
         }
-        if (!Objects.equals(this._value, other._value)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this._value, other._value);
     }
     
     

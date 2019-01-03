@@ -23,12 +23,12 @@ import com.ecuatask.actualizadormaven2.model.Maquina;
  *
  * @author wcadena
  */
-public class LeerArchivos implements Runnable {
+public final class LeerArchivos implements Runnable {
 
     public LeerArchivos() {
-        this._aplicaciones = new ArrayList<Aplicacion>();
-        this._discos = new ArrayList<Disco>();
-        this._maquinas  =new ArrayList<Maquina>();
+        this._aplicaciones = new ArrayList<>();
+        this._discos = new ArrayList<>();
+        this._maquinas  =new ArrayList<>();
         this.cargarTraductores();
     }
     
@@ -36,8 +36,8 @@ public class LeerArchivos implements Runnable {
     public List<String> traductores;
     
     private ArrayList<Aplicacion> _aplicaciones;
-    private ArrayList<Disco>    _discos;
-    private ArrayList<Maquina>  _maquinas;
+    private final ArrayList<Disco>    _discos;
+    private final ArrayList<Maquina>  _maquinas;
     private ActualizadorJNLP aThis; 
     private JTextArea jTextArea1; 
     private JTextArea jTextArea2; 
@@ -78,7 +78,7 @@ public class LeerArchivos implements Runnable {
     }
 
     public void cargarTraductores() {
-        this.traductores = new ArrayList<String>();
+        this.traductores = new ArrayList<>();
         this.primerTraductor = "System information for \\\\\\\\(.*?):\\W"//1
                +"Uptime:(.+.*?)\\W"
                +"Kernel version:(.+.*?)\\W"
@@ -119,7 +119,7 @@ public class LeerArchivos implements Runnable {
     }
     
     public ArrayList<Aplicacion> setAplicacion(String dato) {
-        ArrayList<Aplicacion> lista = new ArrayList<Aplicacion>();
+        ArrayList<Aplicacion> lista = new ArrayList<>();
         
         StringTokenizer st = new StringTokenizer(dato,"\n");
         boolean lee=false;
@@ -155,7 +155,7 @@ public class LeerArchivos implements Runnable {
      * traductor q es el tipo de archivo que encontrara o el tipo de documento a
      * buscar
      *
-     * @param Dirarchivo
+     * @param contenidoarchivo
      * @param Traductor
      */
     public void parseDoc(String contenidoarchivo, String Traductor) {
@@ -163,7 +163,7 @@ public class LeerArchivos implements Runnable {
         Pattern p = Pattern.compile(Traductor);
         Matcher m = p.matcher(input);
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         Maquina mod = new Maquina();
         Disco di = new com.ecuatask.actualizadormaven2.model.Disco();
         ArrayList<Aplicacion> apli = new ArrayList<Aplicacion>();
@@ -211,8 +211,6 @@ public class LeerArchivos implements Runnable {
             
             System.out.println("->"+mod.toString().trim());
             
-            if(mod != null)
-                this._maquinas.add(mod);
            }            
         }
             
@@ -234,7 +232,7 @@ public class LeerArchivos implements Runnable {
         
         Thread thread1 = new Thread(pr, "Thread 1");
         thread1.join();
-        thread1.run();
+        thread1.start();
         
     }
     @Override
