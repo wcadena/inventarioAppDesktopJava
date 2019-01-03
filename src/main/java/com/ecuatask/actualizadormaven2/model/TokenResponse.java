@@ -13,7 +13,7 @@ public class TokenResponse {
     
     private String token_type;
     private int expiresIn;
-    private String accessToken;
+    public String accessToken;
     private String refreshToken;
 
     public String getToken_type() {

@@ -228,10 +228,7 @@ public class LeerArchivos implements Runnable {
    
     
 
-    public static void main(String[] args) throws InterruptedException {
-        LeerArchivos.LeerArchivos(args);
-        
-    }
+    
     public static void LeerArchivos(String[] args) throws InterruptedException {                
         LeerArchivos a =new LeerArchivos();
         a.arranca();

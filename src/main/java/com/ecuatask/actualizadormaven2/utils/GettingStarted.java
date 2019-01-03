@@ -221,11 +221,7 @@ public class GettingStarted {
         }
     }
 
-    public static void main(String[] args) throws JSONException, IOException {
-        GettingStarted testObject = new GettingStarted();
-        testObject.getToken();
-        testObject.getAgents();
-    }
+   
 }
 
 class TokenResponse {
