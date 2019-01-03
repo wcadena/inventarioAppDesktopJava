@@ -193,17 +193,14 @@ public class LeerArchivos implements Runnable {
                 this._aplicaciones = apli;
                 while(nombreIterator.hasNext()){
                         Aplicacion elemento = nombreIterator.next();
-                        //System.out.println("+->"+elemento);
                 }
                 
             }
             if(porte==6){                
-                for (int j = 0; j < 6; j++) {
-                    //System.out.println("****"+m.group(j).trim().length());
+                for (int j = 0; j < 6; j++) {                    
                     if(m.group(j).trim()!= null&&m.group(j).trim().length()>64){
                         di = this.setDisco(m.group(i++).trim());
                         this._discos.add(di);
-                        //System.out.println("=->"+di.toString());
                     }                    
                 }                
             }
@@ -232,8 +229,7 @@ public class LeerArchivos implements Runnable {
                 this._maquinas.add(mod);
            }            
         }
-        //m.appendTail(result);
-        //System.out.println(result);
+            
     }
 
     

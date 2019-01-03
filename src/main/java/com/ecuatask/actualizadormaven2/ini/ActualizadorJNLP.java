@@ -76,7 +76,7 @@ public class ActualizadorJNLP extends javax.swing.JApplet  {
         int j=0;
         List<String> tar = arc.traductores;
         for (String dat : tar) {
-            //System.out.println(j++);
+            
             arc.parseDoc(dato, dat);
             this._aplicaciones=arc.getAplicaciones();
             this._discos=arc.getDiscos();

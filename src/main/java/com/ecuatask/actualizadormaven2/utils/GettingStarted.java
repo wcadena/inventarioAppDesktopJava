@@ -112,21 +112,6 @@ public class GettingStarted {
             System.out.println("Response Code : "
                     + connection.getResponseCode());
             System.out.println(connection.getResponseMessage());
-            ////////////////
-           /* InputStream indd = connection.getErrorStream();
-
-            if (indd == null) {
-                indd = connection.getInputStream();
-            }
-            ByteArrayOutputStream resultdd = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = indd.read(buffer)) != -1) {
-                resultdd.write(buffer, 0, length);
-            }
-            //System.out.println("--*-*--->" + resultdd.toString());;//para ver el error
-            */
-            ////////////////
             
            
             InputStreamReader isr= new InputStreamReader(connection.getInputStream());
@@ -136,7 +121,7 @@ public class GettingStarted {
             String inputLine;
             StringBuffer response = new StringBuffer();
             while ((inputLine = in.readLine()) != null) {
-                //System.out.println("======>"+inputLine);
+                
                 response.append(inputLine);
             }
             in.close();
