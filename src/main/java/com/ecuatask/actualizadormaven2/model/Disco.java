@@ -18,15 +18,7 @@ public class Disco {
     private String 	free	;
     private String 	free_porsiento	;
 
-    public Disco(String volume, String type, String format, String label, String size, String free, String free_porsiento) {
-        this.volume = volume;
-        this.type = type;
-        this.format = format;
-        this.label = label;
-        this.size = size;
-        this.free = free;
-        this.free_porsiento = free_porsiento;
-    }
+    
     public Disco() {
         this.volume = "";
         this.type = "";

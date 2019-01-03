@@ -28,24 +28,7 @@ private String 	processor_type	;
 private String 	physical_memory	;
 private String 	video_driver	;
 
-    public Maquina(String nombre, String uptime, String kernel_version, String product_type, String product_version, String service_pack, String kernel_build_number, String registered_organization, String registered_owner, String ie_version, String system_root, String processors, String processor_speed, String processor_type, String physical_memory, String video_driver) {
-        this.nombre = nombre;
-        this.uptime = uptime;
-        this.kernel_version = kernel_version;
-        this.product_type = product_type;
-        this.product_version = product_version;
-        this.service_pack = service_pack;
-        this.kernel_build_number = kernel_build_number;
-        this.registered_organization = registered_organization;
-        this.registered_owner = registered_owner;
-        this.ie_version = ie_version;
-        this.system_root = system_root;
-        this.processors = processors;
-        this.processor_speed = processor_speed;
-        this.processor_type = processor_type;
-        this.physical_memory = physical_memory;
-        this.video_driver = video_driver;
-    }
+    
     
     public Maquina() {
         this.nombre = "";

@@ -5,33 +5,24 @@
  */
 package com.ecuatask.actualizadormaven2.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import static javafx.scene.input.KeyCode.T;
+//import static javafx.scene.input.KeyCode.T;
 import javax.xml.bind.DatatypeConverter;
-import com.ecuatask.actualizadormaven2.model.ApiParametros;
 import com.ecuatask.actualizadormaven2.model.api.EquipoApi;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -40,13 +31,11 @@ import com.ecuatask.actualizadormaven2.model.TokenResponse;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.ecuatask.actualizadormaven2.model.api.ErrorApi;
-import com.ecuatask.actualizadormaven2.model.api.hilos.ActualizarAplicaciones;
 /**
  *
  * @author Anibal
@@ -62,16 +51,7 @@ public class ConectarRestfull {
     private String baseURL;
     private TokenResponse tokenResponse;
 
-    public ConectarRestfull(String vendorName, String appName, String busNo, String username, String password, String scope, String baseURL, TokenResponse tokenResponse) {
-        this.vendorName = vendorName;
-        this.appName = appName;
-        this.busNo = busNo;
-        this.username = username;
-        this.password = password;
-        this.scope = scope;
-        this.baseURL = baseURL;
-        this.tokenResponse = tokenResponse;
-    }
+    
 
     public ConectarRestfull() throws IOException {
         ///https://developer.niceincontact.com/API/CompleteRequestExampleCode
