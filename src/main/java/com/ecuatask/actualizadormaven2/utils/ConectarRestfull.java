@@ -185,7 +185,7 @@ public class ConectarRestfull {
         nvPairList.add(nv2);
         nvPairList.add(nv3);
         nvPairList.add(nv4);
-        String URL = LeerConfig.getSite()+"api/check_list__opciones_check_lists";
+        String URL = LeerConfig.getSite()+"/api/check_list__opciones_check_lists";
         String result = this.post(tokenResponse, URL, "check_list_id="+equipo.data.check_list_id+
                 "&opciones_check_list_id="+LeerConfig.getOpcionesCheckListId()+
                 "&valor1="+ (new String(aplicacion.getBytes("UTF-8"), "ISO-8859-1")) );        
