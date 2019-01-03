@@ -42,37 +42,19 @@ public class EscribirArchivos {
     }
     
     public static void WritePropertiesFileMain(String key, String data) {
-        
-        FileOutputStream fileOut = null;
-        FileInputStream fileIn = null;
-        try {           
-            Properties configProperty = new Properties();           
-            File file = new File("./util/main.properties");
-            fileIn = new FileInputStream(file);
-            configProperty.load(fileIn);
-            configProperty.setProperty(key, data);
-            fileOut = new FileOutputStream(file);
-            configProperty.store(fileOut, "sample properties");
-
-        } catch (Exception ex) {
-            Logger.getLogger(EscribirArchivos.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
-            try {
-                fileOut.close();
-            } catch (IOException ex) {
-                Logger.getLogger(EscribirArchivos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        EscribirArchivos.WritePropertiesFile(key,data,"./util/main.properties");
     }
     
     public static void WritePropertiesFile(String key, String data) {
+        EscribirArchivos.WritePropertiesFile(key,data,EscribirArchivos.getLOCALAPPDATA());
+    }
+    public static void WritePropertiesFile(String key, String data,String archivo) {
         
         FileOutputStream fileOut = null;
         FileInputStream fileIn = null;
         try {           
             Properties configProperty = new Properties();           
-            File file = new File(EscribirArchivos.getLOCALAPPDATA());
+            File file = new File(archivo);
             fileIn = new FileInputStream(file);
             configProperty.load(fileIn);
             configProperty.setProperty(key, data);
