@@ -50,7 +50,7 @@
         <!-- dato-->
         <res id="shortcutSpec.xml" src="inventario_Instalador_shortcutSpec.xml"/>
         <res id="Unix_shortcutSpec.xml" src="inventario_Instalador_Unix_shortcutSpec.xml"/>
-        <res id="Installer.image" src="D:\Users\wcade\Documents\NetBeansProjects\ActualizadorMaven2\util\apple-touch-icon-180x180.png"/>
+        <res id="Installer.image" src="util\apple-touch-icon-180x180.png"/>
     </resources>
    
     <jar src="dependency/plexus-utils.jar"/>
@@ -84,30 +84,22 @@
             <file src="script.bat" targetdir="$INSTALL_PATH"/>
             <parsable targetfile="$INSTALL_PATH/script.bat"/>
             <!-- The file will be parsed -->
-            <!-- paquetes 
+            
+            <!--<file override="update"
+                src="dist2\ActualizadorMaven2.jar" targetdir="$INSTALL_PATH/"/>-->
             <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Actualizador.jar" targetdir="$INSTALL_PATH/"/>
+                src="util\apple-touch-icon-180x180.png" targetdir="$INSTALL_PATH/"/>
             <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\apple-touch-icon-180x180.png" targetdir="$INSTALL_PATH/"/>
+                src="util\run.bat" targetdir="$INSTALL_PATH/"/>
             <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\launch.html" targetdir="$INSTALL_PATH/"/>
+                src="util\splashScreen.png" targetdir="$INSTALL_PATH/"/>
+            <!--<file override="update"
+                src="dist\lib" targetdir="$INSTALL_PATH/"/>-->
             <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\launch.jnlp" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\README.TXT" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\run.bat" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\splashScreen.png" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\lib" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\util\icon.ico" targetdir="$INSTALL_PATH/"/>
-            <file override="update"
-                src="D:\Users\Anibal\misDoc\NetBeansProjects\inventarioAppDesktopJava\dist\Inventarios.exe" targetdir="$INSTALL_PATH/"/>
-            -->
+                src="util\icon.ico" targetdir="$INSTALL_PATH/"/>
+            <!--<file override="update"
+                src="dist\Inventarios.jar" targetdir="$INSTALL_PATH/"/>
+         -->
         </pack>
         <pack name="Docs" required="no">
             <description>The documentation</description>
