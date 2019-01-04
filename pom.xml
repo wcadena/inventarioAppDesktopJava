@@ -158,6 +158,22 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <!-- todo el istalador-->
+                    <execution>
+                        <id>copy-izpack-resource_dist</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${staging.dir}/dist/bin</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/dist/bin</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
