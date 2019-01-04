@@ -82,7 +82,7 @@
                         <manifest>  
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>MainClass</mainClass>
+                            <mainClass>com.ecuatask.actualizadormaven2.Actualizador</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -136,6 +136,21 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${staging.dir}/util</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>util/</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-izpack-resource_util</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/dist/bin/util</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>util/</directory>
