@@ -1,1 +1,1 @@
-javaw -jar ActualizadorMaven2.jar
+javaw com.ecuatask.actualizadormaven2.Actualizador

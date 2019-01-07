@@ -125,6 +125,9 @@
                                 <resource>
                                     <directory>src/main/java</directory>
                                 </resource>
+                                <resource>
+                                    <directory>target/classes</directory>
+                                </resource>
                             </resources>
                         </configuration>               
                     </execution>
@@ -229,6 +232,10 @@
                         <goals>
                             <goal>izpack</goal>
                         </goals>
+                        <configuration>
+                            <izpackBasedir>target</izpackBasedir>
+                            <installerFile>target/Setup-1.0.1.jar</installerFile>
+                         </configuration>
                     </execution>
                 </executions>
             </plugin>

@@ -93,8 +93,10 @@
                   src="util/run.bat" targetdir="$INSTALL_PATH/"/>
             <file override="update"
                   src="util/splashScreen.png" targetdir="$INSTALL_PATH/"/>
-            <!--<file override="update"
-            src="dist/bin/lib" targetdir="$INSTALL_PATH/"/>-->
+            <fileset override="update"
+            dir="../../target/classes" targetdir="$INSTALL_PATH/">
+                
+            </fileset>
             <file override="update"
                   src="util/icon.ico" targetdir="$INSTALL_PATH/"/>
             <!--<file override="update"
