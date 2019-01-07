@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecuatask.actualizadormaven2.utils;
+package com.ecuatask.actualizadormaven.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -115,8 +115,8 @@ public class LeerConfig {
     return true;
 }
     
-    public static com.ecuatask.actualizadormaven2.model.TokenResponse getToken() {
-        com.ecuatask.actualizadormaven2.model.TokenResponse tk = new com.ecuatask.actualizadormaven2.model.TokenResponse();
+    public static com.ecuatask.actualizadormaven.model.TokenResponse getToken() {
+        com.ecuatask.actualizadormaven.model.TokenResponse tk = new com.ecuatask.actualizadormaven.model.TokenResponse();
         String dir = EscribirArchivos.getLOCALAPPDATA();
         try {
             

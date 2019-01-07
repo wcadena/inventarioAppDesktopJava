@@ -5,9 +5,9 @@
  */
 package util;
 
-import com.ecuatask.actualizadormaven2.utils.ConectarRestfull;
-import com.ecuatask.actualizadormaven2.utils.LeerArchivos;
-import com.ecuatask.actualizadormaven2.utils.PruebaRuntime;
+import com.ecuatask.actualizadormaven.utils.ConectarRestfull;
+import com.ecuatask.actualizadormaven.utils.LeerArchivos;
+import com.ecuatask.actualizadormaven.utils.PruebaRuntime;
 
 
 import java.io.IOException;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecuatask.actualizadormaven2.utils;
+package com.ecuatask.actualizadormaven.utils;
 
-import com.ecuatask.actualizadormaven2.ini.ActualizadorJNLP;
+import com.ecuatask.actualizadormaven.ini.ActualizadorJNLP;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,9 +15,9 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JTextArea;
-import com.ecuatask.actualizadormaven2.model.Aplicacion;
-import com.ecuatask.actualizadormaven2.model.Disco;
-import com.ecuatask.actualizadormaven2.model.Maquina;
+import com.ecuatask.actualizadormaven.model.Aplicacion;
+import com.ecuatask.actualizadormaven.model.Disco;
+import com.ecuatask.actualizadormaven.model.Maquina;
 
 /**
  *
@@ -165,8 +165,8 @@ public final class LeerArchivos implements Runnable {
 
         StringBuilder result = new StringBuilder();
         Maquina mod = new Maquina();
-        Disco di = new com.ecuatask.actualizadormaven2.model.Disco();
-        ArrayList<Aplicacion> apli = new ArrayList<Aplicacion>();
+        Disco di;
+        ArrayList<Aplicacion> apli;
 
         while (m.find()) {
             int i = 1;

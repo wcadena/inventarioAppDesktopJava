@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecuatask.actualizadormaven2;
+package com.ecuatask.actualizadormaven;
 
-import com.ecuatask.actualizadormaven2.ini.ActualizadorJNLP;
+import com.ecuatask.actualizadormaven.ini.ActualizadorJNLP;
 import javax.swing.JFrame;
 
 /**

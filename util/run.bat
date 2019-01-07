@@ -1,1 +1,1 @@
-javaw com.ecuatask.actualizadormaven2.Actualizador
+javaw com.ecuatask.actualizadormaven.Actualizador

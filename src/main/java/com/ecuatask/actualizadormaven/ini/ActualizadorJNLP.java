@@ -1,20 +1,20 @@
-package com.ecuatask.actualizadormaven2.ini;
+package com.ecuatask.actualizadormaven.ini;
 
 
 
 
-import com.ecuatask.actualizadormaven2.model.Aplicacion;
-import com.ecuatask.actualizadormaven2.model.Disco;
-import com.ecuatask.actualizadormaven2.model.Maquina;
-import com.ecuatask.actualizadormaven2.model.TokenResponse;
-import com.ecuatask.actualizadormaven2.model.api.EquipoApi;
-import com.ecuatask.actualizadormaven2.model.api.ErrorApi;
-import com.ecuatask.actualizadormaven2.model.api.hilos.ActualizarAplicaciones;
-import com.ecuatask.actualizadormaven2.utils.ConectarRestfull;
-import com.ecuatask.actualizadormaven2.utils.EscribirArchivos;
-import com.ecuatask.actualizadormaven2.utils.LeerArchivos;
-import com.ecuatask.actualizadormaven2.utils.LeerConfig;
-import com.ecuatask.actualizadormaven2.utils.PruebaRuntime;
+import com.ecuatask.actualizadormaven.model.Aplicacion;
+import com.ecuatask.actualizadormaven.model.Disco;
+import com.ecuatask.actualizadormaven.model.Maquina;
+import com.ecuatask.actualizadormaven.model.TokenResponse;
+import com.ecuatask.actualizadormaven.model.api.EquipoApi;
+import com.ecuatask.actualizadormaven.model.api.ErrorApi;
+import com.ecuatask.actualizadormaven.model.api.hilos.ActualizarAplicaciones;
+import com.ecuatask.actualizadormaven.utils.ConectarRestfull;
+import com.ecuatask.actualizadormaven.utils.EscribirArchivos;
+import com.ecuatask.actualizadormaven.utils.LeerArchivos;
+import com.ecuatask.actualizadormaven.utils.LeerConfig;
+import com.ecuatask.actualizadormaven.utils.PruebaRuntime;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecuatask.actualizadormaven2.model.api.hilos;
+package com.ecuatask.actualizadormaven.model.api.hilos;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 import javax.swing.JToggleButton;
-import com.ecuatask.actualizadormaven2.model.TokenResponse;
-import com.ecuatask.actualizadormaven2.model.api.EquipoApi;
-import com.ecuatask.actualizadormaven2.utils.ConectarRestfull;
-import com.ecuatask.actualizadormaven2.model.Aplicacion;
+import com.ecuatask.actualizadormaven.model.TokenResponse;
+import com.ecuatask.actualizadormaven.model.api.EquipoApi;
+import com.ecuatask.actualizadormaven.utils.ConectarRestfull;
+import com.ecuatask.actualizadormaven.model.Aplicacion;
 
 /**
  *
@@ -29,7 +29,7 @@ public class ActualizarAplicaciones implements Runnable {
         enviarAplicacion();
     }
 
-    private final com.ecuatask.actualizadormaven2.model.TokenResponse tokenResponse;
+    private final com.ecuatask.actualizadormaven.model.TokenResponse tokenResponse;
     private final EquipoApi _equipo;
     private final ArrayList<Aplicacion> _aplicaciones;
     

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecuatask.actualizadormaven2.utils;
+package com.ecuatask.actualizadormaven.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -21,13 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
-import com.ecuatask.actualizadormaven2.model.api.EquipoApi;
+import com.ecuatask.actualizadormaven.model.api.EquipoApi;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.ecuatask.actualizadormaven2.model.TokenResponse;
+import com.ecuatask.actualizadormaven.model.TokenResponse;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,7 +35,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.ecuatask.actualizadormaven2.model.api.ErrorApi;
+import com.ecuatask.actualizadormaven.model.api.ErrorApi;
 /**
  *
  * @author Anibal

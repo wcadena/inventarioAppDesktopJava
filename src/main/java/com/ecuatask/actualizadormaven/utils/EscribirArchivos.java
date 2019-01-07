@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecuatask.actualizadormaven2.utils;
+package com.ecuatask.actualizadormaven.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +35,7 @@ public class EscribirArchivos {
             configOutput = new FileOutputStream(EscribirArchivos.getLOCALAPPDATA(),true);
             config.setProperty(property, value);   
             configOutput.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             Logger.getLogger(EscribirArchivos.class.getName()).log(Level.SEVERE, null, "Error guardando configuración\n" + e.getMessage());
 
         }
@@ -51,7 +51,7 @@ public class EscribirArchivos {
     public static void WritePropertiesFile(String key, String data,String archivo) {
         
         FileOutputStream fileOut = null;
-        FileInputStream fileIn = null;
+        FileInputStream fileIn;
         try {           
             Properties configProperty = new Properties();           
             File file = new File(archivo);
@@ -61,7 +61,7 @@ public class EscribirArchivos {
             fileOut = new FileOutputStream(file);
             configProperty.store(fileOut, "sample properties");
 
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             Logger.getLogger(EscribirArchivos.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
@@ -90,7 +90,7 @@ public class EscribirArchivos {
             OutputStream out = new FileOutputStream(f);
             props.store(out, "This is an optional header comment string");
             out.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             Logger.getLogger(EscribirArchivos.class.getName()).log(Level.SEVERE, null, e);
         }
     }
