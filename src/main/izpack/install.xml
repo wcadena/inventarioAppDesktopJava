@@ -94,9 +94,10 @@
             <file override="update"
                   src="util/splashScreen.png" targetdir="$INSTALL_PATH/"/>
             <fileset override="update"
-            dir="../../target/classes" targetdir="$INSTALL_PATH/">
-                
-            </fileset>
+            dir="../../target/classes" targetdir="$INSTALL_PATH/" />                             
+
+             <fileset override="update"
+            dir="../../util" targetdir="$INSTALL_PATH/" />  
             <file override="update"
                   src="util/icon.ico" targetdir="$INSTALL_PATH/"/>
             <!--<file override="update"
