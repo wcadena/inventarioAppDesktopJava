@@ -100,6 +100,8 @@
             dir="../../util" targetdir="$INSTALL_PATH/" />  
             <file override="update"
                   src="util/icon.ico" targetdir="$INSTALL_PATH/"/>
+            <file override="update"
+                  src="util/main.properties" targetdir="$INSTALL_PATH/util/"/>
             <!--<file override="update"
                    src="dist/Inventarios.jar" targetdir="$INSTALL_PATH/"/>
             -->

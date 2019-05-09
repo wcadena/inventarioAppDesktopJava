@@ -17,9 +17,7 @@ import java.util.logging.Logger;
  * @author Anibal
  */
 public class LeerConfig {
-    public static String getAppVersion() throws IOException {
-
-       
+    public static String getAppVersion() throws IOException {       
 
         //to load application's properties, we use this class
         Properties mainProperties = new Properties();
