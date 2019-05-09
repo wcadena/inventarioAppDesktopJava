@@ -105,7 +105,7 @@
             -->
         </pack>
         <pack name="Docs" required="no">
-            <description>The documentation</description>
+            <description>La documentación</description>
             <file src="doc" targetdir="$INSTALL_PATH"/>
             <!-- Reccursive adding -->
         </pack>

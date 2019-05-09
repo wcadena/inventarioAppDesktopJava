@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ecuatask</groupId>
     <artifactId>ActualizadorMaven</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     
@@ -74,7 +74,7 @@
                         <manifest>  
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.ecuatask.actualizadormaven2.Actualizador</mainClass>
+                            <mainClass>com.ecuatask.actualizadormaven.Actualizador</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
