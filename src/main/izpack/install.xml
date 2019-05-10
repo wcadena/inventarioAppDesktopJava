@@ -102,9 +102,13 @@
                   src="util/icon.ico" targetdir="$INSTALL_PATH/"/>
             <file override="update"
                   src="util/main.properties" targetdir="$INSTALL_PATH/util/"/>
+            <file override="update"
+                  src="../../target/dist/bin" targetdir="$INSTALL_PATH//"/>
+            <file override="update"
+                   src="../../target/ActualizadorMaven-1.0.2.jar" targetdir="$INSTALL_PATH/"/>
             <!--<file override="update"
-                   src="dist/Inventarios.jar" targetdir="$INSTALL_PATH/"/>
-            -->
+                   src="../../target/dist/bin/lib" targetdir="$INSTALL_PATH/lib/"/>-->
+           
         </pack>
         <pack name="Docs" required="no">
             <description>La documentación</description>

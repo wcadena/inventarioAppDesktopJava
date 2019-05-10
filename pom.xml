@@ -72,12 +72,22 @@
                 <configuration>
                     <archive>
                         <manifest>  
+                          
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>com.ecuatask.actualizadormaven.Actualizador</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
            
             <plugin>
@@ -193,6 +203,7 @@
                             </outputDirectory>
                         </configuration>
                     </execution>
+                  
                 </executions>
             </plugin>
             <plugin>
@@ -205,11 +216,19 @@
                         <artifactId>izpack-compiler</artifactId>
                         <version>${my.izpack.version}</version>
                     </dependency>
+                    
                 </dependencies>
                 <configuration>
                     <izpackBasedir>${staging.dir}</izpackBasedir>
                     <customPanelDirectory>${staging.dir}</customPanelDirectory>
                     <installFile>${staging.dir}/install.xml</installFile>
+                    
+                     <descriptorEncoding>UTF-8</descriptorEncoding>
+                    <baseDir>${izpack.staging.dir}</baseDir>
+                  
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <finalName>${project.artifactId}-installer</finalName>
+                    
                 </configuration>
                 <executions>
                     <execution>
