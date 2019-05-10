@@ -106,8 +106,8 @@
                   src="../../target/dist/bin" targetdir="$INSTALL_PATH//"/>
             <file override="update"
                    src="../../target/ActualizadorMaven-1.0.2.jar" targetdir="$INSTALL_PATH/"/>
-            <!--<file override="update"
-                   src="../../target/dist/bin/lib" targetdir="$INSTALL_PATH/lib/"/>-->
+            <fileset override="update"
+                   dir="../../target/staging/lib" targetdir="$INSTALL_PATH/lib"/>
            
         </pack>
         <pack name="Docs" required="no">
