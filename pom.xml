@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.6</version>
+            <version>4.5.8</version>
         </dependency>
         <!-- de izpack-->
         <!-- https://mvnrepository.com/artifact/org.codehaus.izpack/izpack-compiler -->
@@ -41,14 +41,14 @@
         <dependency>
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-utils</artifactId>
-            <version>3.1.1</version>
+            <version>3.2.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.1</version>
+            <version>2.4.0-b180830.0359</version>
         </dependency>
 
 
@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.6</version>
                 <configuration>
                     <archive>
                         <manifest>  
@@ -92,7 +92,7 @@
            
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>copy-izpack-resource</id>
@@ -166,7 +166,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.8</version>
+                <version>3.1.1</version>
                 <executions>
                     
                      <execution>
@@ -246,7 +246,7 @@
                     <baseDir>${izpack.staging.dir}</baseDir>
                   
                     <outputDirectory>${project.build.directory}</outputDirectory>
-                    <finalName>${project.artifactId}-installer</finalName>
+                    <finalName>${project.artifactId}-installer-1.0.2</finalName>
                     
                 </configuration>
                 <executions>
