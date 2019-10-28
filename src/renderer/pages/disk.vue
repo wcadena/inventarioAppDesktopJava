@@ -15,51 +15,51 @@
 </template>
 
 <script>
-import List from "../components/List";
+import List from '../components/List'
 
 export default {
   components: {
     List
   },
   methods: {
-    getDiskData(num) {
+    getDiskData (num) {
       try {
         return [
           {
-            name: "Name",
+            name: 'Name',
             value: this.$store.state.data.diskLayout[num].name,
             img: `static/disk/name.svg`
           },
           {
-            name: "Type",
+            name: 'Type',
             value: this.$store.state.data.diskLayout[num].type,
             img: `static/disk/type.svg`
           },
           {
-            name: "Firmware Revision",
+            name: 'Firmware Revision',
             value: this.$store.state.data.diskLayout[num].firmwareRevision,
             img: `static/disk/firmwarerevision.svg`
           },
           {
-            name: "Serial Num",
+            name: 'Serial Num',
             value: this.$store.state.data.diskLayout[num].serialNum,
             img: `static/disk/serialnum.svg`
           },
           {
-            name: "Size",
+            name: 'Size',
             value: Math.round(
               this.$store.state.data.diskLayout[num].size / 1000000000
             ),
             img: `static/disk/size.svg`,
-            unit: "GB"
+            unit: 'GB'
           }
-        ];
+        ]
       } catch (e) {
-        return [];
+        return []
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

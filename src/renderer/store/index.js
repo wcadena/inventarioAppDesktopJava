@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import si from 'systeminformation'
-const { getCurrentWindow } = require('electron').remote;
+const { getCurrentWindow } = require('electron').remote
 
 Vue.use(Vuex)
 
@@ -11,15 +11,15 @@ export default new Vuex.Store({
     title: 'System Information'
   },
   mutations: {
-    setData(state, data) {
+    setData (state, data) {
       state.data = data
     },
-    setTitle(state, title) {
+    setTitle (state, title) {
       state.title = title
     }
   },
   actions: {
-    async GET_DATA({ commit }) {
+    async GET_DATA ({ commit }) {
       let data
       try {
         data = await si.getAllData()
@@ -28,7 +28,7 @@ export default new Vuex.Store({
       }
       commit('setData', data)
     },
-    SET_TITLE({ commit }, title) {
+    SET_TITLE ({ commit }, title) {
       commit('setTitle', title)
     }
   },

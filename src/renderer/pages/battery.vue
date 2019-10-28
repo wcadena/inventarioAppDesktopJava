@@ -5,43 +5,43 @@
 </template>
 
 <script>
-import List from "../components/List";
+import List from '../components/List'
 
 export default {
   components: {
     List
   },
   computed: {
-    data() {
+    data () {
       try {
         return [
           {
-            name: "Is Charging",
+            name: 'Is Charging',
             value: this.$store.state.data.battery.ischarging,
             img: `static/battery/ischarging.svg`
           },
           {
-            name: "Max Capacity",
+            name: 'Max Capacity',
             value: this.$store.state.data.battery.maxcapacity,
             img: `static/battery/maxcapacity.svg`
           },
           {
-            name: "Current Capacity",
+            name: 'Current Capacity',
             value: this.$store.state.data.battery.currentcapacity,
             img: `static/battery/currentcapacity.svg`
           },
           {
-            name: "Percent",
+            name: 'Percent',
             value: this.$store.state.data.battery.percent,
             img: `static/battery/percent.svg`
           }
-        ];
+        ]
       } catch (e) {
-        return [];
+        return []
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
