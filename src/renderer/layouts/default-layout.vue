@@ -46,65 +46,65 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: true,
       fixed: false,
       menus: [
         {
-          icon: 'bubble_chart',
-          title: 'Summary',
-          href: ''
+          icon: "bubble_chart",
+          title: "Summary",
+          href: ""
         },
         {
-          icon: 'bubble_chart',
-          title: 'Operating System',
-          href: 'os'
+          icon: "bubble_chart",
+          title: "Operating System",
+          href: "os"
         },
         {
-          icon: 'bubble_chart',
-          title: 'System',
-          href: 'system'
+          icon: "bubble_chart",
+          title: "System",
+          href: "system"
         },
         {
-          icon: 'bubble_chart',
-          title: 'CPU',
-          href: 'cpu'
+          icon: "bubble_chart",
+          title: "CPU",
+          href: "cpu"
         },
         {
-          icon: 'bubble_chart',
-          title: 'RAM',
-          href: 'ram'
+          icon: "bubble_chart",
+          title: "RAM",
+          href: "ram"
         },
         {
-          icon: 'bubble_chart',
-          title: 'Disk',
-          href: 'disk'
+          icon: "bubble_chart",
+          title: "Disk",
+          href: "disk"
         },
         {
-          icon: 'bubble_chart',
-          title: 'Battery',
-          href: 'battery'
+          icon: "bubble_chart",
+          title: "Battery",
+          href: "battery"
         },
         {
-          icon: 'bubble_chart',
-          title: 'Graphics',
-          href: 'graphics'
+          icon: "bubble_chart",
+          title: "Graphics",
+          href: "graphics"
         },
         {
-          icon: 'bubble_chart',
-          title: 'Network',
-          href: 'network'
+          icon: "bubble_chart",
+          title: "Network",
+          href: "network"
         }
       ],
       miniVariant: false
-    }
+    };
   },
   computed: {
-    title () {
-      return this.$store.state.title
+    title() {
+      return this.$store.state.title;
     }
   }
-}
+};
 </script>

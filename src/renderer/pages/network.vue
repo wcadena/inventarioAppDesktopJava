@@ -5,42 +5,42 @@
 </template>
 
 <script>
-import List from '../components/List'
+import List from "../components/List";
 export default {
   components: {
     List
   },
   computed: {
-    data () {
-      let iface = this.$store.state.data.networkStats.iface
+    data() {
+      let iface = this.$store.state.data.networkStats.iface;
       let net = this.$store.state.data.net.filter(
         data => data.iface === iface
-      )[0]
+      )[0];
       return [
         {
-          name: 'Name',
+          name: "Name",
           value: net.iface,
           img: `static/network/name.svg`
         },
         {
-          name: 'IP v4',
+          name: "IP v4",
           value: net.ip4,
           img: `static/network/ip4.svg`
         },
         {
-          name: 'IP v6',
+          name: "IP v6",
           value: net.ip6,
           img: `static/network/ip6.svg`
         },
         {
-          name: 'MAC',
+          name: "MAC",
           value: net.mac,
           img: `static/network/mac.svg`
         }
-      ]
+      ];
     }
   }
-}
+};
 </script>
 
 <style scoped>

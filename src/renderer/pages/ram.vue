@@ -33,103 +33,103 @@
 </template>
 
 <script>
-import List from '../components/List'
+import List from "../components/List";
 export default {
   components: {
     List
   },
   computed: {
-    data () {
+    data() {
       return [
         {
-          name: 'Total',
+          name: "Total",
           value: Math.round(this.$store.state.data.mem.total / 1000000),
           img: `static/ram/total.svg`,
-          unit: 'MB'
+          unit: "MB"
         },
         {
-          name: 'Active',
+          name: "Active",
           value: Math.round(this.$store.state.data.mem.active / 1000000),
           img: `static/ram/active.svg`,
-          unit: 'MB'
+          unit: "MB"
         },
         {
-          name: 'Free',
+          name: "Free",
           value: Math.round(this.$store.state.data.mem.free / 1000000),
           img: `static/ram/free.svg`,
-          unit: 'MB'
+          unit: "MB"
         },
         {
-          name: 'Available',
+          name: "Available",
           value: Math.round(this.$store.state.data.mem.available / 1000000),
           img: `static/ram/available.svg`,
-          unit: 'MB'
+          unit: "MB"
         },
         {
-          name: 'Swap Total',
+          name: "Swap Total",
           value: Math.round(this.$store.state.data.mem.swaptotal / 1000000),
           img: `static/ram/swaptotal.svg`,
-          unit: 'MB'
+          unit: "MB"
         },
         {
-          name: 'Swap Used',
+          name: "Swap Used",
           value: Math.round(this.$store.state.data.mem.swapused / 1000000),
           img: `static/ram/swapused.svg`,
-          unit: 'MB'
+          unit: "MB"
         },
         {
-          name: 'Swap Free',
+          name: "Swap Free",
           value: Math.round(this.$store.state.data.mem.swapfree / 1000000),
           img: `static/ram/swapfree.svg`,
-          unit: 'MB'
+          unit: "MB"
         }
-      ]
+      ];
     }
   },
   methods: {
-    getMemory (pos) {
+    getMemory(pos) {
       try {
         return [
           {
-            name: 'Size',
+            name: "Size",
             value: Math.round(
               this.$store.state.data.memLayout[pos].size / 1000000
             ),
             img: `static/ram/size.svg`,
-            unit: 'MB'
+            unit: "MB"
           },
           {
-            name: 'Type',
+            name: "Type",
             value: this.$store.state.data.memLayout[pos].type,
             img: `static/ram/type.svg`
           },
           {
-            name: 'Clock Speed',
+            name: "Clock Speed",
             value: this.$store.state.data.memLayout[pos].clockSpeed,
             img: `static/ram/clockspeed.svg`
           },
           {
-            name: 'Manufacturer',
+            name: "Manufacturer",
             value: this.$store.state.data.memLayout[pos].manufacturer,
             img: `static/ram/manufacturer.svg`
           },
           {
-            name: 'Part Num',
+            name: "Part Num",
             value: this.$store.state.data.memLayout[pos].partNum,
             img: `static/ram/partnum.svg`
           },
           {
-            name: 'Serial Num',
+            name: "Serial Num",
             value: this.$store.state.data.memLayout[pos].serialNum,
             img: `static/ram/serialnum.svg`
           }
-        ]
+        ];
       } catch (e) {
-        return []
+        return [];
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>

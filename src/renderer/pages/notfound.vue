@@ -8,11 +8,11 @@
 <script>
 export default {
   methods: {
-    w () {
-      console.log(this.$route)
+    w() {
+      console.log(this.$route);
     }
   }
-}
+};
 </script>
 
 <style scoped>

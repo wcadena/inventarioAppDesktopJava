@@ -13,16 +13,16 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       isLoading: false
-    }
+    };
   },
-  async created () {
-    await this.$store.dispatch('GET_DATA')
-    this.isLoading = true
+  async created() {
+    await this.$store.dispatch("GET_DATA");
+    this.isLoading = true;
   }
-}
+};
 </script>
 
 <style>

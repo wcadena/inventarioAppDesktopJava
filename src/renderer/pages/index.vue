@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import List from '../components/List'
+import List from "../components/List";
 
 export default {
   components: {
@@ -15,44 +15,44 @@ export default {
   //     this.$store.dispatch('SET_TITLE', 'YOUR TITLE')
   // },
   computed: {
-    data () {
+    data() {
       try {
         return [
           {
-            name: 'OS',
+            name: "OS",
             value: this.$store.state.data.os.distro,
             img: `static/os/platform/${this.$store.state.data.os.platform.toLowerCase()}.svg`
           },
           {
-            name: 'Baseboard',
+            name: "Baseboard",
             value: this.$store.state.data.baseboard.manufacturer,
             img: `static/system/baseboard/manufacturer.svg`
           },
           {
-            name: 'CPU',
+            name: "CPU",
             value: this.$store.state.data.cpu.brand,
             img: `static/cpu/cpu.svg`
           },
           {
-            name: 'RAM',
+            name: "RAM",
             value: Math.round(this.$store.state.data.mem.total / 1000000),
             img: `static/ram/total.svg`,
-            unit: 'MB'
+            unit: "MB"
           },
           {
-            name: 'Battery',
+            name: "Battery",
             value: this.$store.state.data.battery.hasBattery
-              ? 'Has battery'
-              : 'Hasnt battery',
+              ? "Has battery"
+              : "Hasnt battery",
             img: `static/battery/ischarging.svg`
           }
-        ]
+        ];
       } catch (e) {
-        return []
+        return [];
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
