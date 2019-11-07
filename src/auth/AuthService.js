@@ -37,10 +37,27 @@ class AuthService {
       scope: '*',
     })
         .then(response => {
+          let rs = response.data;
+          let authResult = {
+            accessToken : rs.access_token,
+            idToken:
+          }
+
           this.access_token = response['data']['access_token'];
-          this.get_users_data()
+          console.log(rs,authResult);
+          if (authResult && authResult.accessToken && authResult.idToken) {
+            console.log('entro')
+            this.setSession(authResult)
+            router.replace('/default/dashboard/ecommerce')
+          }
+
         })
         .catch(response => {
+          if (err) {
+            router.replace('/')
+            console.log(err)
+            alert(`Error: ${err.error}. Check the console for further details.`)
+          }
           console.log(response)
         });
   }
@@ -68,7 +85,7 @@ class AuthService {
     )
     localStorage.setItem('access_token', authResult.accessToken)
     localStorage.setItem('id_token', authResult.idToken)
-    localStorage.setItem('expires_at', expiresAt)
+    localStorage.setItem('expires_in', expiresAt)
     this.authNotifier.emit('authChange', { authenticated: true })
   }
 
