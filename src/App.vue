@@ -48,8 +48,7 @@ export default {
   },
   mounted() {
     if (
-      this.selectedLocale.locale === "he" ||
-      this.selectedLocale.locale === "ar"
+      this.selectedLocale.locale === "sp"
     ) {
       this.$store.dispatch("rtlLayout");
     }

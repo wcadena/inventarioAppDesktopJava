@@ -16,39 +16,23 @@
 					<p class="fs-14">{{$t('message.enterUsernameAndPasswordToAccessControlPanelOf')}} {{brand}}.</p>
 					<v-form v-model="valid" class="mb-5">
 						<v-text-field 
-							label="E-mail ID" 
-							v-model="email" 
-							:rules="emailRules" 
+							label="Equipo"
+							v-model="equipo"
 							required
 						></v-text-field>
 						<v-text-field 
-							label="Password" 
-							v-model="password" 
-							type="password" 
-							:rules="passwordRules" 
+							label="Usuario"
+							v-model="usuario"
+							type="text"
 							required
 						></v-text-field>
-						<v-checkbox 
-							color="primary" 
-							label="Remember me" 
-							v-model="checkbox"
-						></v-checkbox>
 						<router-link class="mb-2" to="/session/forgot-password">{{$t('message.forgotPassword')}}?</router-link>
 						<div>
 							<v-btn large @click="submit" block color="primary" class="mb-2">{{$t('message.loginNow')}}</v-btn>
-							<v-btn large @click="onCreateAccount" block color="warning" class="mb-2">{{$t('message.createAccount')}}</v-btn>
 						</div>
 						<p>{{$t('message.bySigningUpYouAgreeTo')}} {{brand}}</p>
 						<router-link to="">{{$t('message.termsOfService')}}</router-link>
 					</v-form>
-					<div class="session-social-links d-inline-block">
-						<v-btn
-								color="error"
-								@click="signinWithAuth0"
-						>
-							Signin With Auth0
-						</v-btn>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -63,7 +47,7 @@ import AppConfig from "Constants/AppConfig";
 import AuthService from "../../auth/AuthService";
 
 const auth = new AuthService();
-const { login, logout, authenticated, authNotifier } = auth;
+const { login, logout } = auth;
 
 export default {
   components: {
@@ -73,32 +57,19 @@ export default {
     return {
       checkbox: false,
       valid: false,
-      email: "demo@example.com",
-      emailRules: [
-        v => !!v || "E-mail is required",
-        v =>
-          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-          "E-mail must be valid"
-      ],
-      password: "test#123",
-      passwordRules: [v => !!v || "Password is required"],
+      equipo: "EQ1p0",
+      usuario: "wcadenaUser",
       appLogo: AppConfig.appLogo2,
       brand: AppConfig.brand
     };
   },
   methods: {
     submit() {
-      const user = {
-        email: this.email,
-        password: this.password
+      const equipo = {
+		  no_serie: this.equipo,
+		  usuario_dom: this.usuario
 			};
-		login();
-    },
-    onCreateAccount() {
-	  this.$router.push("/session/sign-up");
-    },
-    signinWithAuth0() {
-      login();
+		login(equipo);
     }
   }
 };

@@ -15,8 +15,6 @@ const LockScreen = () => import('Views/session/LockScreen');
 const ForgotPassword = () => import('Views/session/ForgotPassword');
 const ResetPassword = () => import('Views/session/ResetPassword');
 
-const Auth0CallBack = () => import('Components/Auth0Callback/Auth0Callback');
-
 Vue.use(Router)
 
 export default new Router({
@@ -27,10 +25,6 @@ export default new Router({
 		boxedRoutes,
 		mini,
 		boxedV2,
-		{
-			path: '/callback',
-			component: Auth0CallBack
-		},
 		{
 			path: '/session/sign-up',
 			component: SignUpOne,

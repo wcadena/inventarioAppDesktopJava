@@ -17,7 +17,8 @@ class AuthService {
     this.authNotifier = new EventEmitter()
   }
 
-  login() {
+  login(equipo) {
+    //https://github.com/wcadena/inventarioAppDesktopJava/blob/63f388fac1830563a51a0c2b2159378c064c273c/src/main/java/utils/ConectarRestfull.java
     axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
     axios.post(AUTH_CONFIG.domain, {
       client_id:  AUTH_CONFIG.clientId,
@@ -33,7 +34,8 @@ class AuthService {
             accessToken : rs.access_token,
             idToken: 5,
             expiresIn: rs.expires_in,
-            refreshToken: rs.refresh_token
+            refreshToken: rs.refresh_token,
+            equipo: equipo
           }
 
           this.access_token = response['data']['access_token'];
@@ -77,6 +79,7 @@ class AuthService {
     localStorage.setItem('refresh_token', authResult.refreshToken)
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_in', expiresAt)
+    localStorage.setItem('equipo', JSON.stringify(authResult.equipo))
     this.authNotifier.emit('authChange', { authenticated: true })
   }
 
@@ -87,6 +90,7 @@ class AuthService {
     localStorage.removeItem('refresh_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_in')
+    localStorage.removeItem('equipo')
     this.userProfile = null
     this.authNotifier.emit('authChange', false)
     // navigate to the home route

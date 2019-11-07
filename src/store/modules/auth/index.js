@@ -35,6 +35,7 @@ const mutations = {
         localStorage.removeItem('refresh_token')
         localStorage.removeItem('id_token')
         localStorage.removeItem('expires_in')
+        localStorage.removeItem('equipo')
         router.push("/session/login");
     },
     signInUserWithAuth0Success(state, user) {
