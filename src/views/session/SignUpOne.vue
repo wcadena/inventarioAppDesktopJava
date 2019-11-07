@@ -37,34 +37,10 @@
 							type="password" 
 							required
 						></v-text-field>
-						<v-btn large @click="submit" block color="primary" class="mb-4">{{$t('message.signUp')}}</v-btn>
+						<v-btn large  block color="primary" class="mb-4">{{$t('message.signUp')}}</v-btn>
 						<p>{{$t('message.bySigningUpYouAgreeTo')}} {{brand}}</p>
 						<router-link to="">{{$t('message.termsOfService')}}</router-link>
 					</v-form>
-					<div class="session-social-links d-inline-block">
-						<ul class="list-inline">
-							<li @click="signInWithFacebook">
-								<span class="facebook-bg session-icon">
-									<i class="ti-facebook"></i>
-								</span>
-							</li>
-							<li @click="signInWithGoogle">
-								<span class="google-bg session-icon">
-									<i class="ti-google"></i>
-								</span>
-							</li>
-							<li @click="signInWithTwitter">
-								<span class="twitter-bg session-icon">
-									<i class="ti-twitter-alt"></i>
-								</span>
-							</li>
-							<li @click="signInWithGithub">
-								<span class="github-bg session-icon">
-									<i class="ti-github"></i>
-								</span>
-							</li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -100,40 +76,5 @@ export default {
       brand: AppConfig.brand
     };
   },
-  methods: {
-    submit() {
-      if (this.valid) {
-        let userDetail = {
-          name: this.name,
-          email: this.email,
-          password: this.password
-        };
-        this.$store.dispatch("signupUserInFirebase", {
-          userDetail,
-          router: this.$router
-        });
-      }
-    },
-    signInWithFacebook() {
-      this.$store.dispatch("signinUserWithFacebook", {
-        router: this.$router
-      });
-    },
-    signInWithGoogle() {
-      this.$store.dispatch("signinUserWithGoogle", {
-        router: this.$router
-      });
-    },
-    signInWithTwitter() {
-      this.$store.dispatch("signinUserWithTwitter", {
-        router: this.$router
-      });
-    },
-    signInWithGithub() {
-      this.$store.dispatch("signinUserWithGithub", {
-        router: this.$router
-      });
-    }
-  }
 };
 </script>

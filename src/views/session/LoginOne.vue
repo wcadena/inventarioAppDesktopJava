@@ -42,31 +42,9 @@
 						<router-link to="">{{$t('message.termsOfService')}}</router-link>
 					</v-form>
 					<div class="session-social-links d-inline-block">
-						<ul class="list-unstyled mb-2">
-							<li @click="signInWithFacebook">
-								<span class="facebook-bg session-icon">
-									<i class="ti-facebook"></i>
-								</span>
-							</li>
-							<li @click="signInWithGoogle">
-								<span class="google-bg session-icon">
-									<i class="ti-google"></i>
-								</span>
-							</li>
-							<li @click="signInWithTwitter">
-								<span class="twitter-bg session-icon">
-									<i class="ti-twitter-alt"></i>
-								</span>
-							</li>
-							<li @click="signInWithGithub">
-								<span class="github-bg session-icon">
-									<i class="ti-github"></i>
-								</span>
-							</li>
-						</ul>
-						<v-btn 
-							color="error" 
-							@click="signinWithAuth0"
+						<v-btn
+								color="error"
+								@click="signinWithAuth0"
 						>
 							Signin With Auth0
 						</v-btn>
@@ -78,7 +56,6 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
 import { mapGetters } from "vuex";
 import SessionSliderWidget from "Components/Widgets/SessionSlider";
 import AppConfig from "Constants/AppConfig";
@@ -115,25 +92,11 @@ export default {
         email: this.email,
         password: this.password
 			};
-			
-      this.$store.dispatch("signinUserInFirebase", {
-        user
-      });
-    },
-    signInWithFacebook() {
-      this.$store.dispatch("signinUserWithFacebook");
-    },
-    signInWithGoogle() {
-      this.$store.dispatch("signinUserWithGoogle");
-    },
-    signInWithTwitter() {
-      this.$store.dispatch("signinUserWithTwitter");
-    },
-    signInWithGithub() {
-      this.$store.dispatch("signinUserWithGithub");
+      console.log(user);
+		login();
     },
     onCreateAccount() {
-      this.$router.push("/session/sign-up");
+	  this.$router.push("/session/sign-up");
     },
     signinWithAuth0() {
       login();

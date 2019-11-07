@@ -39,9 +39,6 @@ import router from './router'
 // store
 import { store } from './store/store';
 
-// firebase
-import './firebase'
-
 
 // include all css files
 import './lib/VuelyCss'

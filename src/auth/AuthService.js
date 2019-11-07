@@ -1,8 +1,11 @@
 import auth0 from 'auth0-js'
+import axios from 'axios';
 import { AUTH_CONFIG } from './auth0-variables'
 import EventEmitter from 'eventemitter3'
 import router from '../router'
 import { store } from '../store/store';
+
+
 
 class AuthService {
 
@@ -24,10 +27,26 @@ class AuthService {
   }
 
   login() {
-    this.auth0.authorize()
+    axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+    axios.post('https://devinventario.ecuatask.com/oauth/token', {
+      client_id:  5,
+      client_secret: 'kCRAX3lwQCbOlI0EG4i50ees4WEzYBkTOFmY4wuA',
+      grant_type: 'password',
+      username: 'admin@admin.com',
+      password: 'password',
+      scope: '*',
+    })
+        .then(response => {
+          this.access_token = response['data']['access_token'];
+          this.get_users_data()
+        })
+        .catch(response => {
+          console.log(response)
+        });
   }
 
   handleAuthentication() {
+    console.log('Entroaca.....12sai')
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult)
