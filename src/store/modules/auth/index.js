@@ -22,7 +22,7 @@ const actions = {
         context.commit('signInUserWithAuth0Success', payload);
     },
     signOutUserFromAuth0(context) {
-        context.commit('signOutUserFromAuth0Success');
+        context.commit('logoutUser');
     }
 }
 
@@ -31,16 +31,16 @@ const mutations = {
     logoutUser(state) {
         state.user = null
         localStorage.removeItem('user');
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        localStorage.removeItem('id_token')
+        localStorage.removeItem('expires_in')
         router.push("/session/login");
     },
     signInUserWithAuth0Success(state, user) {
         state.user = user;
         localStorage.setItem('user',JSON.stringify(user));
         state.isUserSigninWithAuth0 = true;
-    },
-    signOutUserFromAuth0Success(state) {
-        state.user = null
-        localStorage.removeItem('user')
     }
 }
 
