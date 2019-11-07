@@ -40,25 +40,24 @@ class AuthService {
           let rs = response.data;
           let authResult = {
             accessToken : rs.access_token,
-            idToken:
+            idToken: 5,
+            expiresIn: rs.expires_in,
+            refreshToken: rs.refresh_token
           }
 
           this.access_token = response['data']['access_token'];
-          console.log(rs,authResult);
           if (authResult && authResult.accessToken && authResult.idToken) {
-            console.log('entro')
             this.setSession(authResult)
             router.replace('/default/dashboard/ecommerce')
           }
 
         })
         .catch(response => {
-          if (err) {
+          if (response) {
             router.replace('/')
-            console.log(err)
-            alert(`Error: ${err.error}. Check the console for further details.`)
+            console.log(response)
+            alert(`Error: ${response.error}. Check the console for further details.`)
           }
-          console.log(response)
         });
   }
 
@@ -84,6 +83,7 @@ class AuthService {
       authResult.expiresIn * 1000 + new Date().getTime()
     )
     localStorage.setItem('access_token', authResult.accessToken)
+    localStorage.setItem('refresh_token', authResult.refreshToken)
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_in', expiresAt)
     this.authNotifier.emit('authChange', { authenticated: true })
@@ -93,8 +93,9 @@ class AuthService {
     store.dispatch('signOutUserFromAuth0')
     // Clear access token and ID token from local storage
     localStorage.removeItem('access_token')
+    localStorage.removeItem('refresh_token')
     localStorage.removeItem('id_token')
-    localStorage.removeItem('expires_at')
+    localStorage.removeItem('expires_in')
     this.userProfile = null
     this.authNotifier.emit('authChange', false)
     // navigate to the home route
