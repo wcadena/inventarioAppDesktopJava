@@ -1,4 +1,3 @@
-import auth0 from 'auth0-js'
 import axios from 'axios';
 import { AUTH_CONFIG } from './auth0-variables'
 import EventEmitter from 'eventemitter3'
@@ -16,25 +15,17 @@ class AuthService {
     this.isAuthenticated = this.isAuthenticated.bind(this)
     this.authenticated = this.isAuthenticated()
     this.authNotifier = new EventEmitter()
-    this.auth0 = new auth0.WebAuth({
-      domain: AUTH_CONFIG.domain,
-      clientID: AUTH_CONFIG.clientId,
-      redirectUri: AUTH_CONFIG.callbackUrl,
-      audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-      responseType: 'token id_token',
-      scope: 'openid'
-    })
   }
 
   login() {
     axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-    axios.post('https://devinventario.ecuatask.com/oauth/token', {
-      client_id:  5,
-      client_secret: 'kCRAX3lwQCbOlI0EG4i50ees4WEzYBkTOFmY4wuA',
-      grant_type: 'password',
-      username: 'admin@admin.com',
-      password: 'password',
-      scope: '*',
+    axios.post(AUTH_CONFIG.domain, {
+      client_id:  AUTH_CONFIG.clientId,
+      client_secret: AUTH_CONFIG.clientSecret,
+      grant_type: AUTH_CONFIG.grantType,
+      username: AUTH_CONFIG.username,
+      password: AUTH_CONFIG.password,
+      scope: AUTH_CONFIG.scope,
     })
         .then(response => {
           let rs = response.data;
@@ -52,11 +43,11 @@ class AuthService {
           }
 
         })
-        .catch(response => {
-          if (response) {
+        .catch(error => {
+          if (error) {
             router.replace('/')
-            console.log(response)
-            alert(`Error: ${response.error}. Check the console for further details.`)
+            console.log(error)
+            alert(`Error: ${error}. Check the console for further details.`)
           }
         });
   }
