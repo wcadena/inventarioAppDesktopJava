@@ -7,27 +7,9 @@ export const menus = {
 			active: true,
 			label: 'New',
 			items: [
-				{ title: 'message.ecommerce', path: '/default/dashboard/ecommerce', exact: true,label: 'Old' },
-				{ title: 'message.crm', path: '/default/dashboard/crm',label: 'New', exact: true},
-				{ title: 'message.crypto', path: '/mini/dashboard/crypto',label: 'New', exact: true},
-				{ title: 'message.webAnalytics', path: '/mini/dashboard/web-analytics', exact: true,label: 'Old' },
-				{ title: 'message.magazine', path: '/horizontal/dashboard/magazine', exact: true,label: 'Old' },
-				{ title: 'message.news', path: '/boxed-v2/dashboard/news', exact: true,label: 'Old' },
-				{ title: 'message.agency', path: '/boxed/dashboard/agency', exact: true,label: 'Old' },
-				{ title: 'message.saas', path: '/horizontal/dashboard/saas', exact: true,label: 'Old' }
+				{ title: 'message.ecommerce', path: '/default/dashboard/ecommerce', exact: true,label: 'Old' }
 			]
 		},
-		 {
-			action: 'zmdi-balance-wallet',
-			title: 'message.crypto',
-			active: false,
-			label: 'New',
-			items: [
-            { title: 'message.marketCap', path: '/crypto/market-cap',label: 'New'},
-				{ title: 'message.wallet', path: '/crypto/wallet',label: 'New' },
-				{ title: 'message.trade', path:'/crypto/trade',label: 'New'},
-			]
-      },
       {
 			action: 'zmdi zmdi-accounts-alt',
 			title: 'message.crm',
@@ -36,86 +18,12 @@ export const menus = {
 			items: [
 				{ title: 'message.projects', path: '/crm/projects',label: 'New'},
 				{ title: 'message.projectDetails', path: '/crm/projectDetails/01',label: 'New'},
-				{ title: 'message.clients', path:'/crm/clients',label: 'New'},
-				{ title: 'message.reports', path: '/crm/reports',label: 'New' },
 			]
       },
-		{
-			action: 'zmdi-book',
-			title: 'message.courses',
-			active: false,
-			label: 'Old',
-			items: [
-				{ title: 'message.courses', path: '/courses',label: 'Old',},
-				{ title: 'message.coursesList', path:'/courses/courses-list',label: 'Old'},
-				{ title: 'message.courseDetail', path: '/courses/courses-detail',label: 'Old' },
-				{ title: 'message.signIn', path: '/courses/sign-in',label: 'Old',},
-				{ title: 'message.payment', path: '/courses/payment',label: 'Old'}
-			]
-		},
-		{
-			action: 'zmdi-widgets',
-			title: 'message.widgets',
-			active: false,
-			label: 'Old',
-			items: [
-				{ title: 'message.user', path: '/widgets/user-widgets',label: 'Old' },
-				{ title: 'message.charts', path: '/widgets/chart-widgets',label: 'Old'}
-			]
-		},
-		{
-			action: 'zmdi-shopping-cart',
-			title: 'message.ecommerce',
-			active: false,
-			label: 'New',
-			items: [
-				{ title: 'message.shopWithAlgolia', path: '/ecommerce/shop-with-algolia',label: 'Old' },
-				{ title: 'message.shop', path: '/ecommerce/shop',label: 'New' },
-				{ title: 'message.productDetail', path: '/ecommerce/product-detail/men/1',label: 'New' },
-				{ title: 'message.addProduct', path: '/ecommerce/add-product',label: 'New' },
-				{ title: 'message.editProduct', path: '/ecommerce/edit-product',label: 'New' },
-				{ title: 'message.editDetail', path: '/ecommerce/edit-detail/men/1',label: 'New' },
-				{ title: 'message.cart', path: '/ecommerce/cart',label: 'Old' },
-				{ title: 'message.checkout', path: '/ecommerce/checkout',label: 'Old' },
-				{ title: 'message.cards', path: '/ecommerce/cards',label: 'Old' }
-			]
-		},
-		{
-			action: 'zmdi-file-plus',
-			title: 'message.pages',
-			active: false,
-			label: 'Old',
-			items: [
-				{ title: 'message.blog', path: '/pages/blog',label: 'Old' },
-				{ title: 'message.gallery', path: '/pages/gallery',label: 'Old' },
-				{ title: 'message.pricing1', path: '/pages/pricing-1',label: 'Old'},
-				{ title: 'message.pricing2', path: '/pages/pricing-2',label: 'Old'},
-				{ title: 'message.blank', path: '/pages/blank',label: 'Old' }
-			]
-		},
-		{
-			action: 'zmdi-time',
-			title: 'message.session',
-			active: false,
-			label: 'Old',
-			items: [
-				{ title: 'message.signUp', path: '/session/sign-up', exact: true ,label: 'Old'},
-				{ title: 'message.login', path: '/session/login', exact: true,label: 'Old' },
-				{ title: 'message.lockScreen', path: '/session/lock-screen', exact: true ,label: 'Old'},
-				{ title: 'message.forgotPassword', path: '/session/forgot-password', exact: true ,label: 'Old'},
-				{ title: 'message.resetPassword', path: '/session/reset-password', exact: true ,label: 'Old'}
-			]
-		}
+
 	],
 	'message.modules': [
-		{
-			action: 'zmdi-email',
-			title: 'message.inbox',
-			active: false,
-			items: null,
-			path: '/inbox',
-			label: 'Old'
-		},
+
 		{
 			action: 'zmdi-comments',
 			title: 'message.chat',
@@ -166,49 +74,7 @@ export const menus = {
 				{ title: 'message.timepicker', path: '/ui-elements/timepicker',label: 'Old' }
 			]
 		},
-		{
-			action: 'zmdi-format-list-bulleted',
-			title: 'message.treeview',
-			active: false,
-			items: null,
-			path: '/treeview',
-			label:'Old',
-		},
-		{
-			action: 'zmdi-time',
-			title: 'message.timelines',
-			active: false,
-			label:'Old',
-			items: [
-				{ title: 'message.usage', path: '/timelines/usage',label:'Old' },
-				{ title: 'message.smallDots', path: '/timelines/smalldots',label:'Old'},
-				{ title: 'message.iconDots', path: '/timelines/icondots',label:'Old'},
-				{ title: 'message.coloredDots', path: '/timelines/coloreddots',label:'Old'},
-				{ title: 'message.oppositeSlot', path: '/timelines/oppositeslot',label:'Old'},
-				{ title: 'message.denseAlert', path: '/timelines/densealert',label:'Old'},
-				{ title: 'message.advanced', path: '/timelines/advanced',label:'Old'}
-			]
-		},
-		{
-			action: 'zmdi-file-text',
-			title: 'message.forms',
-			active: false,
-			label:'Old',
-			items: [
-				{ title: 'message.formValidation', path: '/forms/form-validation',label: 'Old' },
-				{ title: 'message.stepper', path: '/forms/stepper',label: 'Old' }
-			]
-		},
-		{
-			action: 'zmdi-chart-donut',
-			title: 'message.charts',
-			active: false,
-			label:'Old',
-			items: [
-				{ title: 'message.vueChartjs', path: '/charts/vue-chartjs',label:'Old'},
-				{ title: 'message.vueEcharts', path: '/charts/vue-echarts',label:'Old'}
-			]
-		},
+
 		{
 			action: 'zmdi-flag',
 			title: 'message.icons',
@@ -232,16 +98,6 @@ export const menus = {
 				{ title: 'message.searchRow', path: '/tables/searchwithtext',label:'Old'}
 			]
 		},
-		{
-			action: 'zmdi-map',
-			title: 'message.maps',
-			active: false,
-			label:'Old',
-			items: [
-				{ title: 'message.googleMaps', path: '/maps/google-maps',label:'Old'},
-				{ title: 'message.leafletMaps', path: '/maps/leaflet-maps',label:'Old'}
-			]
-		}
 	],
 	'message.applications': [
 		{
@@ -253,56 +109,11 @@ export const menus = {
 				{ title: 'message.userProfile', path: '/users/user-profile',label:'Old'},
 				{ title: 'message.usersList', path: '/users/users-list',label:'Old'}
 			]
-		},
-		{
-			action: 'zmdi-calendar-note',
-			title: 'message.calendar',
-			active: false,
-			items: null,
-			path: '/calendar',
-			label:'Old',
 		}
 	],
-	'message.features': [
-		{
-			action: 'zmdi-edit',
-			title: 'message.editor',
-			active: false,
-			label:'Old',
-			items: [
-				{ title: 'message.quillEditor', path: '/editor/quilleditor',label:'Old'},
-				{ title: 'message.wYSIWYG', path: '/editor/wysiwyg',label:'Old'}
-			]
-		},
-		{
-			action: 'zmdi-mouse',
-			title: 'message.dragAndDrop',
-			active: false,
-			label:'Old',
-			items: [
-				{ title: 'message.vue2Dragula', path: '/drag-drop/vue2dragula',label:'Old'},
-				{ title: 'message.vueDraggable', path: '/drag-drop/vuedraggable',label:'Old'},
-				{ title: 'message.draggableResizeable', path: '/drag-drop/vuedraggableresizeable',label:'Old'}
-			]
-		}
-	],
+
 	'message.extensions': [
-		{
-			action: 'zmdi-crop',
-			title: 'message.imageCropper',
-			active: false,
-			items: null,
-			path: '/image-cropper',
-			label:'Old'
-		},
-		{
-			action: 'zmdi-collection-video',
-			title: 'message.videoPlayer',
-			active: false,
-			items: null,
-			path: '/video-player',
-			label:'Old'
-		},
+
 		{
 			action: 'zmdi-dropbox',
 			title: 'message.dropzone',
