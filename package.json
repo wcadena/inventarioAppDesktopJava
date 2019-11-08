@@ -14,7 +14,7 @@
     "start": "electron .",
     "watch": "nodemon --exec 'electron .'"
   },
-  "main": "src/background.js",
+  "main": "background.js",
   "dependencies": {
     "@types/leaflet": "^1.5.1",
     "algoliasearch": "^3.33.0",
