@@ -16,7 +16,7 @@ const state = {                                       // dark mode
 	backgroundImage: false,                                // enable sidebar background image
 	horizontalLayoutSidebar: false,                        // horizontal layout sidebar
 	languages,                                             // languages
-	selectedLocale: languages[0],                          // selected locale
+	selectedLocale: languages[7],                          // selected locale
 	sidebarBackgroundImages,                               // sidebar backgorund images
 	selectedSidebarBgImage: sidebarBackgroundImages[0],    // selected sidebar background image
 	sidebarFilters,                                        // sidebar filters
@@ -24,7 +24,7 @@ const state = {                                       // dark mode
 	routerAnimations,                                      // router animations
 	selectedRouterAnimation: routerAnimations[0],          // selected router animation
 	themes,                                                // themes
-	selectedTheme: themes[0],                              // selected theme
+	selectedTheme: themes[4],                              // selected theme
 	headerFilters,                                         // header filters
 	activeHeaderFilter: headerFilters[1],                  // selected header filter
 	mobileSearchForm: false								   // Is Mobile Search Form Open

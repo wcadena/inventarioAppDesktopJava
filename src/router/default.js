@@ -157,7 +157,7 @@ export default {
          meta: {
             requiresAuth: true,
             title: 'message.ecommerce',
-            breadcrumb: null
+            breadcrumb: 'Dashboard / Ecommerce'
          }
       },
       {
