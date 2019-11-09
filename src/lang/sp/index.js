@@ -124,7 +124,7 @@ export default {
   newMembers: 'Nuevos miembros',
   addNewBlog: 'Agregar nuevo blog',
   add: 'Añadir',
-  logOut: 'Añadir',
+  logOut: 'Salir',
   totalAppMemory: 'Total de memoria de la aplicación',
   totalMemoryUsed: 'Memoria total utilizada',
   unreadMail: '12 correo no leído',
