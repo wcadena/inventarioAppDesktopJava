@@ -12,9 +12,12 @@
     "postuninstall": "electron-builder install-app-deps",
     "reset": "git reset --hard",
     "start": "electron .",
-    "watch": "nodemon --exec 'electron .'"
+    "watch": "nodemon --exec 'electron .'",
+    "buildx": "node .electron-vue/build.js && electron-builder",
+    "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src test",
+    "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src test"
   },
-  "main": "background.js",
+  "main": "main.js",
   "dependencies": {
     "@types/leaflet": "^1.5.1",
     "algoliasearch": "^3.33.0",
@@ -69,12 +72,64 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
+    "babel-eslint": "^10.0.3",
+    "babili-webpack-plugin": "^0.1.2",
+    "cfonts": "^2.4.5",
+    "chalk": "^3.0.0",
     "deepmerge": "^4.0.0",
     "electron": "^7.1.1",
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "fibers": "^4.0.1",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "multispinner": "^0.2.1",
     "sass": "^1.22.10",
     "sass-loader": "^7.3.1",
-    "vue-cli-plugin-electron-builder": "^1.4.0",
+    "vue-cli-plugin-electron-builder": "^1.4.1",
     "vue-template-compiler": "^2.6.10"
+  },
+  "build": {
+    "productName": "desktop",
+    "appId": "org.simulatedgreg.electron-vue",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons"
+    }
   }
 }

@@ -17,14 +17,14 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     x: state.x, y: state.y,
     width: state.width, height: state.height,
-    minWidth: 350, maxWidth: 650, minHeight: 300,
+    minWidth: 350, minHeight: 300,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('dist/index.html')
+  mainWindow.loadURL('app://./index.html')
 
   // Manage new window state
   state.manage(mainWindow)
